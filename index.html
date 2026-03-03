@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UAE Ministry of Defence — Strike Report</title>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&family=Barlow:wght@400;500;600;700;800&family=Barlow+Condensed:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f0ede8;
+    --card: #ffffff;
+    --navy: #1a2d4a;
+    --gold: #b8973a;
+    --gold-light: #d4af57;
+    --red: #c0392b;
+    --green: #1a7a4a;
+    --blue: #1a4a8a;
+    --text: #1a2d4a;
+    --sub: #6b7a8d;
+    --border: #d8d0c4;
+    --missile-color: #c0392b;
+    --cruise-color: #e67e22;
+    --drone-color: #2471a3;
+    --intercept-fill: #1a7a4a;
+    --impact-fill: #c0392b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Barlow', sans-serif;
+    min-height: 100vh;
+    padding: 0;
+  }
+
+  /* TOP HEADER — MoD style */
+  .mod-header {
+    background: var(--navy);
+    padding: 18px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--gold);
+  }
+
+  .mod-logo-area {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .mod-logo {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+  }
+
+  .mod-title-block { color: white; }
+
+  .mod-title-ar {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gold-light);
+    direction: rtl;
+    letter-spacing: 1px;
+  }
+
+  .mod-title-en {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.85);
+    margin-top: 2px;
+  }
+
+  .mod-header-right {
+    text-align: right;
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 1px;
+  }
+
+  .mod-date {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--gold-light);
+    margin-top: 4px;
+  }
+
+  /* MAIN TITLE BAND */
+  .title-band {
+    background: white;
+    border-bottom: 1px solid var(--border);
+    padding: 20px 40px;
+    text-align: center;
+  }
+
+  .title-band h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    color: var(--navy);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .title-band .subtitle {
+    font-size: 13px;
+    color: var(--sub);
+    margin-top: 4px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* CONTENT */
+  .content {
+    padding: 30px 40px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+  }
+
+  .section-label .line {
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  .section-label .ar {
+    font-family: 'Tajawal', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--gold);
+    direction: rtl;
+    white-space: nowrap;
+  }
+
+  /* CUMULATIVE CARDS (top — like MoD infographic) */
+  .cumul-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 30px;
+  }
+
+  .cumul-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .cumul-card-header {
+    padding: 10px 16px;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .cumul-card.missile .cumul-card-header { background: var(--missile-color); }
+  .cumul-card.cruise .cumul-card-header { background: var(--cruise-color); }
+  .cumul-card.drone .cumul-card-header { background: var(--drone-color); }
+
+  .cumul-card-body {
+    padding: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+
+  .cumul-stat { text-align: center; }
+
+  .cumul-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 1;
+    color: var(--navy);
+  }
+
+  .cumul-lbl {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sub);
+    margin-top: 3px;
+    line-height: 1.3;
+  }
+
+  .cumul-stat.green .cumul-num { color: var(--green); }
+  .cumul-stat.red .cumul-num { color: var(--red); }
+
+  /* DAILY CHART SECTION */
+  .chart-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 20px 24px;
+    margin-bottom: 30px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .chart-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+
+  .chart-note {
+    font-size: 11px;
+    color: var(--sub);
+    margin-bottom: 20px;
+  }
+
+  /* 3 rows, one per munition type */
+  .type-chart-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .type-label {
+    width: 130px;
+    flex-shrink: 0;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--sub);
+    text-align: right;
+  }
+
+  .days-bars {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .day-bar-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 32px;
+  }
+
+  .day-tag {
+    width: 24px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--sub);
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .bar-track {
+    flex: 1;
+    height: 28px;
+    background: #f0ede8;
+    border-radius: 2px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .bar-intercept {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    padding-left: 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bar-impact {
+    position: absolute;
+    top: 0; bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+    white-space: nowrap;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .bar-impact.sea {
+    background: #2e86ab;
+    opacity: 0.85;
+  }
+
+  .bar-impact.land {
+    background: var(--red);
+    opacity: 0.9;
+  }
+
+  .bar-total-label {
+    width: 80px;
+    flex-shrink: 0;
+    font-size: 11px;
+    color: var(--sub);
+  }
+
+  .bar-total-label strong {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--navy);
+    display: block;
+    line-height: 1;
+  }
+
+  /* CHART LEGEND */
+  .chart-legend {
+    display: flex;
+    gap: 20px;
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .leg {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--sub);
+    font-weight: 500;
+  }
+
+  .leg-box {
+    width: 14px;
+    height: 14px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+
+  /* TYPE SEPARATOR */
+  .type-separator {
+    height: 1px;
+    background: var(--border);
+    margin: 4px 0 16px 144px;
+  }
+
+  /* BOTTOM ROW */
+  .bottom-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .info-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .info-card-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--gold);
+    display: inline-block;
+  }
+
+  /* Casualty */
+  .casualty-row {
+    display: flex;
+    gap: 0;
+  }
+
+  .cas-item {
+    flex: 1;
+    text-align: center;
+    padding: 12px;
+  }
+
+  .cas-item + .cas-item {
+    border-left: 1px solid var(--border);
+  }
+
+  .cas-num {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .cas-num.dead { color: var(--red); }
+  .cas-num.injured { color: var(--cruise-color); }
+
+  .cas-lbl {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sub);
+    margin-top: 4px;
+  }
+
+  /* Daily summary table */
+  .day-summary {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+
+  .day-summary th {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sub);
+    padding: 6px 10px;
+    text-align: right;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .day-summary th:first-child { text-align: left; }
+
+  .day-summary td {
+    padding: 9px 10px;
+    border-bottom: 1px solid #f0ede8;
+    text-align: right;
+    font-weight: 600;
+    color: var(--navy);
+  }
+
+  .day-summary td:first-child {
+    text-align: left;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--gold);
+  }
+
+  .day-summary tfoot td {
+    background: var(--navy);
+    color: white;
+    font-weight: 700;
+    border: none;
+    font-size: 13px;
+  }
+
+  .day-summary tfoot td:first-child {
+    color: var(--gold-light);
+  }
+
+  .delta-down { color: var(--green); font-size: 11px; }
+  .delta-up { color: var(--red); font-size: 11px; }
+
+  /* FOOTER */
+  /* SOURCES TABLE */
+  .sources-section {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 18px 20px;
+    margin-top: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .sources-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    margin-top: 10px;
+  }
+
+  .sources-table th {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--sub);
+    padding: 6px 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+  }
+
+  .sources-table td {
+    padding: 7px 10px;
+    border-bottom: 1px solid #f0ede8;
+    color: var(--text);
+    vertical-align: top;
+    line-height: 1.4;
+  }
+
+  .sources-table tr:last-child td { border-bottom: none; }
+
+  .src-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 2px 6px;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .src-badge.direct { background: #e8f5e9; color: var(--green); border: 1px solid #a5d6a7; }
+  .src-badge.calculated { background: #fff3e0; color: #e65100; border: 1px solid #ffcc80; }
+  .src-badge.provided { background: #e3f2fd; color: var(--blue); border: 1px solid #90caf9; }
+
+  .src-link {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .src-link:hover { text-decoration: underline; }
+    background: var(--navy);
+    color: rgba(255,255,255,0.5);
+    font-size: 11px;
+    text-align: center;
+    padding: 14px 40px;
+    margin-top: 30px;
+    letter-spacing: 1px;
+    border-top: 2px solid var(--gold);
+  }
+
+  .mod-footer strong { color: var(--gold-light); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="mod-header" style="padding:20px 40px 16px;">
+  <div class="mod-logo-area">
+    <div class="mod-title-block">
+      <div class="mod-title-en" style="font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:2px; font-weight:400; margin-bottom:6px;">INDEPENDENT OSINT ANALYSIS — NOT AN OFFICIAL GOVERNMENT DOCUMENT</div>
+      <div style="font-family:'Barlow Condensed',sans-serif; font-size:30px; font-weight:800; color:#fff; letter-spacing:1px; text-transform:uppercase; line-height:1;">Iranian Missile & Drone Attacks on the UAE</div>
+      <div style="font-family:'Tajawal',sans-serif; font-size:16px; font-weight:700; color:var(--gold-light); direction:rtl; margin-top:4px;">تحليل الهجمات الإيرانية بالصواريخ والطائرات المسيّرة على الإمارات</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; letter-spacing:1px;">Day 1 to Day 3 · 28 Feb – 02 Mar 2026 · Sources: UAE MoD official communiqués</div>
+    </div>
+  </div>
+  <div class="mod-header-right">
+    <div class="mod-date">02 – 03 – 2026</div>
+    <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px; letter-spacing:1px;">COMPILED STRIKE REPORT</div>
+  </div>
+</div>
+
+<!-- DISCLAIMER BAND -->
+<div style="background:#fff3cd; border-bottom:2px solid #e6a817; padding:8px 40px; display:flex; align-items:center; gap:12px;">
+  <span style="font-size:16px;">⚠️</span>
+  <span style="font-size:12px; font-weight:600; color:#7d4e00; font-family:'Barlow',sans-serif;">
+    This is an <strong>independent OSINT analysis</strong> compiled from publicly available UAE Ministry of Defence communiqués and press reports. This document is <strong>not affiliated with, endorsed by, or produced by</strong> the UAE Ministry of Defence or any government body.
+  </span>
+  <span style="font-family:'Tajawal',sans-serif; font-size:12px; color:#7d4e00; direction:rtl; margin-left:auto; white-space:nowrap;">تحليل مستقل · ليس وثيقة رسمية</span>
+</div>
+
+<div class="content">
+
+  <!-- CUMULATIVE TOTALS -->
+  <div class="section-label">Cumulative Totals — All Three Days <div class="line"></div> <span class="ar">المجاميع التراكمية — الأيام الثلاثة</span></div>
+  <div class="cumul-grid">
+
+    <div class="cumul-card missile">
+      <div class="cumul-card-header">🚀 Ballistic Missiles</div>
+      <div class="cumul-card-body">
+        <div class="cumul-stat">
+          <div class="cumul-num">174</div>
+          <div class="cumul-lbl">Detected</div>
+        </div>
+        <div class="cumul-stat green">
+          <div class="cumul-num">161</div>
+          <div class="cumul-lbl">Intercepted</div>
+        </div>
+        <div class="cumul-stat red">
+          <div class="cumul-num">13</div>
+          <div class="cumul-lbl">Fell in Sea</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cumul-card cruise">
+      <div class="cumul-card-header">✈ Cruise Missiles</div>
+      <div class="cumul-card-body">
+        <div class="cumul-stat">
+          <div class="cumul-num">8</div>
+          <div class="cumul-lbl">Detected</div>
+        </div>
+        <div class="cumul-stat green">
+          <div class="cumul-num">8</div>
+          <div class="cumul-lbl">Intercepted</div>
+        </div>
+        <div class="cumul-stat">
+          <div class="cumul-num" style="color:var(--sub)">—</div>
+          <div class="cumul-lbl">Minor collateral</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cumul-card drone">
+      <div class="cumul-card-header">🛩 UAVs (Drones)</div>
+      <div class="cumul-card-body">
+        <div class="cumul-stat">
+          <div class="cumul-num">689</div>
+          <div class="cumul-lbl">Detected</div>
+        </div>
+        <div class="cumul-stat green">
+          <div class="cumul-num">645</div>
+          <div class="cumul-lbl">Intercepted</div>
+        </div>
+        <div class="cumul-stat red">
+          <div class="cumul-num">44</div>
+          <div class="cumul-lbl">Impacted on Territory</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- DAILY BREAKDOWN CHART -->
+  <div class="section-label">Daily Breakdown — Intercepted vs. Impact <div class="line"></div> <span class="ar">التفصيل اليومي — الاعتراض مقابل الإصابة</span></div>
+  <div class="chart-section">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
+      <div class="chart-title">Volume per Day by Munition Type</div>
+      <div style="font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--navy); direction:rtl;">الحجم اليومي حسب نوع الذخيرة</div>
+    </div>
+    <div class="chart-note">
+      Bar width = √(count) scaled to type maximum — preserves volume hierarchy across days while keeping small values visible.
+      Green = intercepted · Red = impacted on territory · Blue = fell in sea · % shown inside bar = interception rate.
+    </div>
+
+    <!-- Rendered by JS below for correctness -->
+    <div id="chart-rows"></div>
+
+    <div class="chart-legend">
+      <div class="leg"><div class="leg-box" style="background:#1a7a4a;"></div>Intercepted (ballistic)</div>
+      <div class="leg"><div class="leg-box" style="background:#e67e22;"></div>Intercepted (cruise)</div>
+      <div class="leg"><div class="leg-box" style="background:#2471a3;"></div>Intercepted (UAV)</div>
+      <div class="leg"><div class="leg-box" style="background:#2e86ab;"></div>Fell in Sea</div>
+      <div class="leg"><div class="leg-box" style="background:#c0392b;"></div>Impacted on Territory</div>
+      <div class="leg"><div class="leg-box" style="background:#e8e4df; border:1px solid #ccc;"></div>None</div>
+      <div style="margin-left:auto; font-size:11px; color:var(--sub);">Scale: √(count) — D1 ballistic (137) is wider than D3 (9), cruise stays visible</div>
+    </div>
+  </div>
+
+  <!-- BOTTOM ROW -->
+  <div class="bottom-grid">
+
+    <!-- DAILY TOTALS TABLE -->
+    <div class="info-card">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid var(--gold);">
+        <div class="info-card-title" style="margin-bottom:0; padding-bottom:0; border-bottom:none;">Daily Summary</div>
+        <div style="font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--navy); direction:rtl;">الملخص اليومي</div>
+      </div>
+      <table class="day-summary">
+        <thead>
+          <tr>
+            <th>Day</th>
+            <th>Ballistic</th>
+            <th>Cruise</th>
+            <th>UAVs</th>
+            <th>Total</th>
+            <th>Δ Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>D1 — 28 Feb</td>
+            <td>137</td>
+            <td>0</td>
+            <td>209</td>
+            <td>346</td>
+            <td style="color:var(--sub)">—</td>
+          </tr>
+          <tr>
+            <td>D2 — 01 Mar</td>
+            <td>28</td>
+            <td>2</td>
+            <td>332</td>
+            <td>362</td>
+            <td><span class="delta-up">▲ +5%</span></td>
+          </tr>
+          <tr>
+            <td>D3 — 02 Mar</td>
+            <td>9</td>
+            <td>6</td>
+            <td>148</td>
+            <td>163</td>
+            <td><span class="delta-down">▼ −55%</span></td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td>TOTAL</td>
+            <td>174</td>
+            <td>8</td>
+            <td>689</td>
+            <td>871</td>
+            <td></td>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <!-- CASUALTIES -->
+    <div class="info-card">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid var(--gold);">
+        <div class="info-card-title" style="margin-bottom:0; padding-bottom:0; border-bottom:none;">Casualties & Damage</div>
+        <div style="font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--navy); direction:rtl;">الخسائر والأضرار</div>
+      </div>
+      <div class="casualty-row">
+        <div class="cas-item">
+          <div class="cas-num dead">3</div>
+          <div class="cas-lbl">Fatalities</div>
+        </div>
+        <div class="cas-item">
+          <div class="cas-num injured">68</div>
+          <div class="cas-lbl">Light Injuries</div>
+        </div>
+      </div>
+      <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--sub); line-height: 1.8;">
+        › Audible sounds across the country result from interception operations by air defense systems and fighter jets — <strong>not direct impacts</strong>.<br>
+        › Minor to moderate material damage reported on some civilian properties.<br>
+        › The UAE reserves its full right to respond to this escalation in accordance with international law.<br>
+        › The public is urged to follow official sources only and avoid circulating unverified information.
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- SOURCES -->
+<div style="max-width:1100px; margin:0 auto; padding: 0 40px 30px;">
+  <div class="section-label" style="margin-top:16px;">Sources & Methodology <div class="line"></div> <span class="ar" style="color:var(--gold);">المصادر والمنهجية</span></div>
+  <div class="sources-section">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:10px; padding-bottom:8px; border-bottom:2px solid var(--gold);">
+      <div class="info-card-title" style="margin-bottom:0; padding-bottom:0; border-bottom:none;">Data Sourcing per Figure</div>
+      <div style="font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--navy); direction:rtl;">مصدر كل رقم</div>
+    </div>
+    <table class="sources-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Date</th>
+          <th>Source</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>D1</strong></td>
+          <td>28 Feb 2026</td>
+          <td><a class="src-link" href="https://xcancel.com/modgovae/status/2027864306587693527#m" target="_blank">@modgovae — Post D1</a></td>
+        </tr>
+        <tr>
+          <td><strong>D2</strong></td>
+          <td>01 Mar 2026</td>
+          <td><a class="src-link" href="https://www.instagram.com/p/DVW09P5E8kk/?hl=en" target="_blank">@modgovae — Post D2</a></td>
+        </tr>
+        <tr>
+          <td><strong>D3</strong></td>
+          <td>02 Mar 2026</td>
+          <td><a class="src-link" href="https://www.instagram.com/p/DVZUQyck-0N/?hl=en" target="_blank">@modgovae — Post D3</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="mod-footer">
+  <strong>INDEPENDENT OSINT ANALYSIS</strong> &nbsp;·&nbsp;
+  Not affiliated with the UAE Ministry of Defence or any government body &nbsp;·&nbsp;
+  All figures sourced from official UAE MoD communiqués &nbsp;·&nbsp;
+  Compiled 02-03-2026 &nbsp;·&nbsp; Subject to official revision
+</div>
+
+<script>
+  // DATA
+  const types = [
+    {
+      label: 'Ballistic\nMissiles',
+      color: '#1a7a4a',
+      days: [
+        { detected: 137, intercepted: 132, sea: 5,  land: 0  },
+        { detected: 28,  intercepted: 20,  sea: 8,  land: 0  },
+        { detected: 9,   intercepted: 9,   sea: 0,  land: 0  },
+      ]
+    },
+    {
+      label: 'Cruise\nMissiles',
+      color: '#e67e22',
+      days: [
+        { detected: 0,  intercepted: 0,  sea: 0, land: 0 },
+        { detected: 2,  intercepted: 2,  sea: 0, land: 0 },
+        { detected: 6,  intercepted: 6,  sea: 0, land: 0 },
+      ]
+    },
+    {
+      label: 'UAVs\n(Drones)',
+      color: '#2471a3',
+      days: [
+        { detected: 209, intercepted: 195, sea: 0, land: 14 },
+        { detected: 332, intercepted: 311, sea: 0, land: 21 },
+        { detected: 148, intercepted: 139, sea: 0, land: 9  },
+      ]
+    }
+  ];
+
+  const dayLabels = ['D1', 'D2', 'D3'];
+  const dayDates  = ['28 Feb', '01 Mar', '02 Mar'];
+
+  // Global max detected across ALL types → shared sqrt scale
+  const globalMax = Math.max(...types.flatMap(t => t.days.map(d => d.detected)));
+  const sqrtMax = Math.sqrt(globalMax); // sqrt(332)
+
+  function pct(val) {
+    // sqrt scale: bar total width = sqrt(val)/sqrtMax * 100%
+    if (val === 0) return 0;
+    return (Math.sqrt(val) / sqrtMax * 100).toFixed(2);
+  }
+
+  const container = document.getElementById('chart-rows');
+
+  types.forEach((type, ti) => {
+    // Type row wrapper
+    const rowDiv = document.createElement('div');
+    rowDiv.className = 'type-chart-row';
+
+    const labelDiv = document.createElement('div');
+    labelDiv.className = 'type-label';
+    labelDiv.innerHTML = type.label.replace('\n', '<br>');
+    rowDiv.appendChild(labelDiv);
+
+    const daysDiv = document.createElement('div');
+    daysDiv.className = 'days-bars';
+
+    type.days.forEach((day, di) => {
+      const barRow = document.createElement('div');
+      barRow.className = 'day-bar-row';
+
+      const tag = document.createElement('div');
+      tag.className = 'day-tag';
+      tag.textContent = dayLabels[di];
+      barRow.appendChild(tag);
+
+      const track = document.createElement('div');
+      track.className = 'bar-track';
+
+      const totalW = parseFloat(pct(day.detected));
+
+      if (day.detected === 0) {
+        track.style.background = '#e8e4df';
+        track.innerHTML = `<div style="position:absolute;inset:0;display:flex;align-items:center;padding-left:10px;font-size:11px;color:var(--sub);">— none detected</div>`;
+      } else {
+        // Outer container: sqrt-scaled width
+        const outer = document.createElement('div');
+        outer.style.cssText = `position:absolute;left:0;top:0;bottom:0;width:0%;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);overflow:hidden;display:flex;`;
+        outer.dataset.targetWidth = totalW + '%';
+
+        // Proportions within the bar: intercept / sea / land of detected
+        const interceptPct = (day.intercepted / day.detected * 100).toFixed(1);
+        const seaPct       = (day.sea         / day.detected * 100).toFixed(1);
+        const landPct      = (day.land        / day.detected * 100).toFixed(1);
+        const interceptRate = interceptPct;
+
+        // Intercept segment
+        const iSeg = document.createElement('div');
+        iSeg.style.cssText = `width:${interceptPct}%;background:${type.color};height:100%;display:flex;align-items:center;padding-left:7px;overflow:hidden;white-space:nowrap;font-size:11px;font-weight:700;color:white;flex-shrink:0;`;
+        iSeg.textContent = `${day.intercepted} (${interceptRate}%)`;
+        outer.appendChild(iSeg);
+
+        // Sea segment
+        if (day.sea > 0) {
+          const sSeg = document.createElement('div');
+          sSeg.style.cssText = `width:${seaPct}%;background:#2e86ab;height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white;flex-shrink:0;overflow:hidden;`;
+          sSeg.textContent = day.sea > 1 ? `${day.sea} sea` : day.sea;
+          outer.appendChild(sSeg);
+        }
+
+        // Land/impact segment
+        if (day.land > 0) {
+          const lSeg = document.createElement('div');
+          lSeg.style.cssText = `width:${landPct}%;background:#c0392b;height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white;flex-shrink:0;overflow:hidden;`;
+          lSeg.textContent = `${day.land}`;
+          outer.appendChild(lSeg);
+        }
+
+        track.appendChild(outer);
+
+        // Animate after short delay
+        setTimeout(() => { outer.style.width = outer.dataset.targetWidth; }, 400 + (ti * 3 + di) * 80);
+      }
+
+      barRow.appendChild(track);
+
+      const totalLabel = document.createElement('div');
+      totalLabel.className = 'bar-total-label';
+
+      // Deltas vs previous day
+      const deltas = {
+        0: { // Ballistic
+          0: null,
+          1: { pct: -80, dir: 'down' },
+          2: { pct: -68, dir: 'down' }
+        },
+        1: { // Cruise
+          0: null,
+          1: { pct: null, dir: 'up', label: 'new' },
+          2: { pct: 200, dir: 'up' }
+        },
+        2: { // UAVs
+          0: null,
+          1: { pct: 59, dir: 'up' },
+          2: { pct: -55, dir: 'down' }
+        }
+      };
+
+      const delta = deltas[ti][di];
+      let deltaHtml = '';
+      if (delta && day.detected > 0) {
+        const color = delta.dir === 'down' ? '#1a7a4a' : '#c0392b';
+        const arrow = delta.dir === 'down' ? '▼' : '▲';
+        const label = delta.label ? delta.label : (delta.pct > 0 ? `+${delta.pct}%` : `${delta.pct}%`);
+        deltaHtml = `<span style="font-size:10px;font-weight:700;color:${color};">${arrow} ${label}</span>`;
+      }
+
+      totalLabel.innerHTML = `<div style="display:flex;align-items:baseline;gap:5px;"><strong>${day.detected}</strong>${deltaHtml}</div><span style="font-size:10px;color:var(--sub);">detected</span>`;
+      barRow.appendChild(totalLabel);
+
+      daysDiv.appendChild(barRow);
+    });
+
+    rowDiv.appendChild(daysDiv);
+    container.appendChild(rowDiv);
+
+    // Separator between types
+    if (ti < types.length - 1) {
+      const sep = document.createElement('div');
+      sep.className = 'type-separator';
+      container.appendChild(sep);
+    }
+  });
+</script>
+</body>
+</html>
