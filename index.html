@@ -577,12 +577,34 @@
   }
 
   .mod-footer strong { color: var(--gold-light); }
+
+  @media (max-width: 768px) {
+    .mod-header { padding: 12px 16px !important; flex-wrap: wrap; gap: 8px; }
+    .mod-date { font-size: 14px !important; }
+    .content { padding: 12px !important; }
+    .cumul-grid { grid-template-columns: 1fr !important; gap: 10px !important; }
+    .chart-section { padding: 14px !important; }
+    .chart-legend { flex-wrap: wrap; gap: 8px; }
+    .bottom-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+    .day-summary th, .day-summary td { padding: 5px !important; font-size: 10px !important; }
+    .sources-table th, .sources-table td { padding: 5px 6px !important; font-size: 10px !important; }
+    .bar-total-label { width: 64px !important; }
+    div[style*='max-width:1100px'] { padding: 0 12px 20px !important; }
+    .type-label { width: 52px !important; font-size: 9px !important; }
+    #volume-bars { gap: 6px !important; }
+  }
+  @media (max-width: 480px) {
+    .cumul-num { font-size: 26px !important; }
+    .cas-num { font-size: 30px !important; }
+    .type-label { font-size: 8px !important; width: 40px !important; }
+    .bar-total-label strong { font-size: 14px !important; }
+  }
 </style>
 </head>
 <body>
 
 <!-- HEADER -->
-<div class="mod-header" style="padding:20px 40px 16px;">
+<div class="mod-header" style="padding:20px 40px 16px; flex-wrap:wrap; gap:8px;">
   <div class="mod-logo-area">
     <div class="mod-title-block">
       <div class="mod-title-en" style="font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:2px; font-weight:400; margin-bottom:6px;">INDEPENDENT OSINT ANALYSIS — NOT AN OFFICIAL GOVERNMENT DOCUMENT</div>
@@ -625,8 +647,11 @@
           <div class="cumul-lbl">Intercepted</div>
         </div>
         <div class="cumul-stat red">
-          <div class="cumul-num">13+1</div>
-          <div class="cumul-lbl">Sea / Territory</div>
+          <div class="cumul-num">13</div>
+          <div class="cumul-lbl">Fell in Sea</div>
+        </div>
+        <div class="cumul-stat red" style="grid-column:1/-1;border-top:1px solid #f5c0bb;padding-top:6px;margin-top:2px;">
+          <div style="font-size:11px;color:var(--red);font-weight:700;">⚠ 1 ballistic missile impacted UAE territory (Day 4)</div>
         </div>
       </div>
     </div>
@@ -677,10 +702,14 @@
       <div style="font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--navy); direction:rtl;">الحجم اليومي حسب نوع الذخيرة</div>
     </div>
     <div class="chart-note">
-      <strong>Top bar</strong> = composition per day (fills 100% — shows ballistic / cruise / UAV split) · <strong>Bottom bar</strong> = total volume scaled to biggest day (D2, 362) · Hover for details.
+      <strong>Top bar</strong> = composition per day (fills 100% — shows ballistic / cruise / UAV split) · <strong>Bottom bar</strong> = total volume scaled to biggest day (Day 2, 362) · Hover for details.
     </div>
 
     <div id="chart-rows"></div>
+    <div style="margin:20px 0 8px;">
+      <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--sub);text-transform:uppercase;margin-bottom:10px;">Daily Volume — Total Munitions Fired</div>
+      <div id="volume-bars" style="display:flex;align-items:flex-end;gap:12px;height:80px;"></div>
+    </div>
 
     <div class="chart-legend">
       <div class="leg"><div class="leg-box" style="background:#c0392b;"></div>Ballistic (intercepted)</div>
@@ -688,7 +717,7 @@
       <div class="leg"><div class="leg-box" style="background:#2471a3;"></div>UAV / Drone (intercepted)</div>
       <div class="leg"><div class="leg-box" style="background:repeating-linear-gradient(135deg,#666,#666 2px,#66666633 2px,#66666633 7px);"></div>Fell in sea (diagonal stripes)</div>
       <div class="leg"><div class="leg-box" style="background:#444;"></div>Impacted on territory (dark solid)</div>
-      <div class="leg" style="margin-left:auto;"><div class="leg-box" style="background:var(--navy);opacity:0.25;height:6px;margin-top:4px;"></div>Volume bar (scaled to D2)</div>
+      <div class="leg" style="margin-left:auto;"><div class="leg-box" style="background:var(--navy);opacity:0.25;height:6px;margin-top:4px;"></div>Volume bar (scaled to Day 2)</div>
     </div>
   </div>
 
@@ -714,7 +743,7 @@
         </thead>
         <tbody>
           <tr>
-            <td>D1 — 28 Feb</td>
+            <td>Day 1 — 28 Feb</td>
             <td>137</td>
             <td>0</td>
             <td>209</td>
@@ -722,7 +751,7 @@
             <td style="color:var(--sub)">—</td>
           </tr>
           <tr>
-            <td>D2 — 01 Mar</td>
+            <td>Day 2 — 01 Mar</td>
             <td>28</td>
             <td>2</td>
             <td>332</td>
@@ -730,7 +759,7 @@
             <td><span class="delta-up">▲ +5%</span></td>
           </tr>
           <tr>
-            <td>D3 — 02 Mar</td>
+            <td>Day 3 — 02 Mar</td>
             <td>9</td>
             <td>6</td>
             <td>148</td>
@@ -738,7 +767,7 @@
             <td><span class="delta-down">▼ −55%</span></td>
           </tr>
           <tr>
-            <td>D4 — 03 Mar</td>
+            <td>Day 4 — 03 Mar</td>
             <td>12</td>
             <td>0</td>
             <td>123</td>
@@ -805,22 +834,22 @@
       </thead>
       <tbody>
         <tr>
-          <td><strong>D1</strong></td>
+          <td><strong>Day 1</strong></td>
           <td>28 Feb 2026</td>
           <td><a class="src-link" href="https://xcancel.com/modgovae/status/2027864306587693527#m" target="_blank">@modgovae — Post D1</a></td>
         </tr>
         <tr>
-          <td><strong>D2</strong></td>
+          <td><strong>Day 2</strong></td>
           <td>01 Mar 2026</td>
           <td><a class="src-link" href="https://www.instagram.com/p/DVW09P5E8kk/?hl=en" target="_blank">@modgovae — Post D2</a></td>
         </tr>
         <tr>
-          <td><strong>D3</strong></td>
+          <td><strong>Day 3</strong></td>
           <td>02 Mar 2026</td>
           <td><a class="src-link" href="https://www.instagram.com/p/DVZUQyck-0N/?hl=en" target="_blank">@modgovae — Post D3</a></td>
         </tr>
         <tr>
-          <td><strong>D4</strong></td>
+          <td><strong>Day 4</strong></td>
           <td>03 Mar 2026</td>
           <td><a class="src-link" href="https://gulfnews.com/world/mena/us-israel-war-on-iran-day-4-uae-have-dealt-with-186-ballistic-missiles-812-iranian-drones-1.500461540" target="_blank">Gulf News D4 live — UAE MoD briefing 04:02 PM</a></td>
         </tr>
@@ -833,29 +862,30 @@
 
 <script>
   const days = [
-    { label: 'D1', date: '28 Feb',
+    { label: 'Day 1', date: '28 Feb',
       ballistic: { total: 137, intercepted: 132, sea: 5,  land: 0  },
       cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
       uav:       { total: 209, intercepted: 195, sea: 0,  land: 14 },
       grandTotal: 346 },
-    { label: 'D2', date: '01 Mar',
+    { label: 'Day 2', date: '01 Mar',
       ballistic: { total: 28,  intercepted: 20,  sea: 8,  land: 0  },
       cruise:    { total: 2,   intercepted: 2,   sea: 0,  land: 0  },
       uav:       { total: 332, intercepted: 311, sea: 0,  land: 21 },
       grandTotal: 362 },
-    { label: 'D3', date: '02 Mar',
+    { label: 'Day 3', date: '02 Mar',
       ballistic: { total: 9,   intercepted: 9,   sea: 0,  land: 0  },
       cruise:    { total: 6,   intercepted: 6,   sea: 0,  land: 0  },
       uav:       { total: 148, intercepted: 139, sea: 0,  land: 9  },
       grandTotal: 163 },
-    { label: 'D4', date: '03 Mar',
+    { label: 'Day 4', date: '03 Mar',
       ballistic: { total: 12,  intercepted: 11,  sea: 0,  land: 1  },
       cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
       uav:       { total: 123, intercepted: 110, sea: 0,  land: 13 },
       grandTotal: 135 },
   ];
 
-  const maxTotal = Math.max(...days.map(d => d.grandTotal)); // 362
+  const grandAllTotal = days.reduce((s,d) => s + d.grandTotal, 0);
+  const maxTotal = grandAllTotal; // volume bar scales to total 1006
 
   const baseColors = {
     ballistic: '#c0392b',
@@ -885,7 +915,7 @@
 
     // Day label
     const tag = document.createElement('div');
-    tag.style.cssText = 'width:24px;flex-shrink:0;text-align:center;';
+    tag.style.cssText = 'width:44px;flex-shrink:0;text-align:center;';
     tag.innerHTML = `<div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);">${day.label}</div><div style="font-size:9px;color:#aaa;">${day.date}</div>`;
     wrapper.appendChild(tag);
 
@@ -946,16 +976,7 @@
 
     barCol.appendChild(topTrack);
 
-    // --- BOTTOM BAR: volume scaled to max day ---
-    const botWrapper = document.createElement('div');
-    botWrapper.style.cssText = 'height:8px;background:#f0ede8;border:1px solid var(--border);border-radius:2px;position:relative;overflow:hidden;';
-    const botFill = document.createElement('div');
-    const volPct = (day.grandTotal / maxTotal * 100).toFixed(2);
-    botFill.style.cssText = `width:0%;height:100%;background:var(--navy);opacity:0.25;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);`;
-    botFill.dataset.target = volPct + '%';
-    botWrapper.appendChild(botFill);
-    barCol.appendChild(botWrapper);
-    setTimeout(() => { botFill.style.width = botFill.dataset.target; }, 400 + di * 100);
+
 
     wrapper.appendChild(barCol);
 
@@ -987,6 +1008,40 @@
   updateDate();
   setInterval(updateDate, 60000);
   document.getElementById('last-updated').textContent = 'LAST UPDATED: 03-03-2026 16:02';
+
+  // Volume trend bars
+  const volContainer = document.getElementById('volume-bars');
+  if (volContainer) {
+    const maxVol = Math.max(...days.map(d => d.grandTotal));
+    const volDeltas = ['+100%', '+5%', '−55%', '−17%'];
+    days.forEach((day, di) => {
+      const col = document.createElement('div');
+      col.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;height:100%;justify-content:flex-end;';
+      const barH = Math.round(day.grandTotal / maxVol * 52);
+      const bar = document.createElement('div');
+      bar.style.cssText = 'width:100%;height:0px;background:var(--navy);border-radius:2px 2px 0 0;transition:height 0.9s cubic-bezier(0.4,0,0.2,1);cursor:crosshair;';
+      bar.classList.add('has-tip');
+      bar.dataset.tip = day.label + ': ' + day.grandTotal + ' total munitions';
+      setTimeout(() => { bar.style.height = barH + 'px'; }, 700 + di * 120);
+      const numLbl = document.createElement('div');
+      numLbl.style.cssText = 'font-size:10px;font-weight:700;color:var(--navy);white-space:nowrap;';
+      numLbl.textContent = day.grandTotal;
+      const dLbl = document.createElement('div');
+      dLbl.style.cssText = 'font-size:9px;color:var(--sub);text-align:center;line-height:1.4;';
+      dLbl.textContent = day.label;
+      if (volDeltas[di]) {
+        const dTag = document.createElement('div');
+        const isDown = volDeltas[di].includes('−');
+        dTag.style.cssText = 'font-size:9px;font-weight:700;color:' + (isDown ? '#1a7a4a' : '#c0392b') + ';';
+        dTag.textContent = volDeltas[di];
+        dLbl.appendChild(dTag);
+      }
+      col.appendChild(bar);
+      col.appendChild(numLbl);
+      col.appendChild(dLbl);
+      volContainer.appendChild(col);
+    });
+  }
 
   // Global floating tooltip
   const tip = document.createElement('div');
