@@ -588,12 +588,13 @@
       <div class="mod-title-en" style="font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:2px; font-weight:400; margin-bottom:6px;">INDEPENDENT OSINT ANALYSIS — NOT AN OFFICIAL GOVERNMENT DOCUMENT</div>
       <div style="font-family:'Barlow Condensed',sans-serif; font-size:30px; font-weight:800; color:#fff; letter-spacing:1px; text-transform:uppercase; line-height:1;">Iranian Missile & Drone Attacks on the UAE</div>
       <div style="font-family:'Tajawal',sans-serif; font-size:16px; font-weight:700; color:var(--gold-light); direction:rtl; margin-top:4px;">تحليل الهجمات الإيرانية بالصواريخ والطائرات المسيّرة على الإمارات</div>
-      <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; letter-spacing:1px;">Day 1 to Day 4 · 28 Feb – 03 Mar 2026 · Sources: UAE MoD official communiqués</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; letter-spacing:1px;">Day 1 to Day 4 · 28 Feb – 03 Mar 2026 · Sources: UAE MoD official official statements</div>
     </div>
   </div>
   <div class="mod-header-right">
-    <div class="mod-date">02 – 03 – 2026</div>
+    <div class="mod-date" id="report-date">03 – 03 – 2026</div>
     <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px; letter-spacing:1px;">COMPILED STRIKE REPORT</div>
+    <div style="font-size:10px; color:rgba(255,255,255,0.35); margin-top:3px; letter-spacing:1px;" id="last-updated">LAST UPDATED: —</div>
   </div>
 </div>
 
@@ -601,7 +602,7 @@
 <div style="background:#fff3cd; border-bottom:2px solid #e6a817; padding:8px 40px; display:flex; align-items:center; gap:12px;">
   <span style="font-size:16px;">⚠️</span>
   <span style="font-size:12px; font-weight:600; color:#7d4e00; font-family:'Barlow',sans-serif;">
-    This is an <strong>independent OSINT analysis</strong> compiled from publicly available UAE Ministry of Defence communiqués and press reports. This document is <strong>not affiliated with, endorsed by, or produced by</strong> the UAE Ministry of Defence or any government body.
+    <strong>Independent analysis only.</strong> This site is not affiliated with, endorsed by, or produced by the UAE Ministry of Defence or any government body. All data is sourced exclusively from publicly available official UAE MoD statements and linked press reports. Figures are reproduced for informational purposes only. No editorial position is taken on the events described.
   </span>
   <span style="font-family:'Tajawal',sans-serif; font-size:12px; color:#7d4e00; direction:rtl; margin-left:auto; white-space:nowrap;">تحليل مستقل · ليس وثيقة رسمية</span>
 </div>
@@ -649,7 +650,7 @@
     </div>
 
     <div class="cumul-card drone">
-      <div class="cumul-card-header">🛩 UAVs (Drones)</div>
+      <div class="cumul-card-header">🛩 UAV / Drones</div>
       <div class="cumul-card-body">
         <div class="cumul-stat">
           <div class="cumul-num">812</div>
@@ -684,9 +685,9 @@
     <div class="chart-legend">
       <div class="leg"><div class="leg-box" style="background:#c0392b;"></div>Ballistic (intercepted)</div>
       <div class="leg"><div class="leg-box" style="background:#e67e22;"></div>Cruise (intercepted)</div>
-      <div class="leg"><div class="leg-box" style="background:#2471a3;"></div>UAV (intercepted)</div>
-      <div class="leg"><div class="leg-box" style="background:repeating-linear-gradient(135deg,#c0392b,#c0392b 2px,#c0392b33 2px,#c0392b33 7px);"></div>Fell in sea (diagonal stripes)</div>
-      <div class="leg"><div class="leg-box" style="background:#7b1a12;"></div>Impacted on territory (dark solid)</div>
+      <div class="leg"><div class="leg-box" style="background:#2471a3;"></div>UAV / Drone (intercepted)</div>
+      <div class="leg"><div class="leg-box" style="background:repeating-linear-gradient(135deg,#666,#666 2px,#66666633 2px,#66666633 7px);"></div>Fell in sea (diagonal stripes)</div>
+      <div class="leg"><div class="leg-box" style="background:#444;"></div>Impacted on territory (dark solid)</div>
       <div class="leg" style="margin-left:auto;"><div class="leg-box" style="background:var(--navy);opacity:0.25;height:6px;margin-top:4px;"></div>Volume bar (scaled to D2)</div>
     </div>
   </div>
@@ -828,13 +829,7 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-<div class="mod-footer">
-  <strong>INDEPENDENT OSINT ANALYSIS</strong> &nbsp;·&nbsp;
-  Not affiliated with the UAE Ministry of Defence or any government body &nbsp;·&nbsp;
-  All figures sourced from official UAE MoD communiqués &nbsp;·&nbsp;
-  Compiled 02-03-2026 &nbsp;·&nbsp; Subject to official revision
-</div>
+
 
 <script>
   const days = [
@@ -981,6 +976,17 @@
 
     container.appendChild(wrapper);
   });
+
+  // Live date + last updated
+  function pad(n) { return String(n).padStart(2,'0'); }
+  function updateDate() {
+    const now = new Date();
+    const date = `${pad(now.getDate())} – ${pad(now.getMonth()+1)} – ${now.getFullYear()}`;
+    document.getElementById('report-date').textContent = date;
+  }
+  updateDate();
+  setInterval(updateDate, 60000);
+  document.getElementById('last-updated').textContent = 'LAST UPDATED: 03-03-2026 16:02';
 
   // Global floating tooltip
   const tip = document.createElement('div');
