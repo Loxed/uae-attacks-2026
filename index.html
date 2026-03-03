@@ -588,7 +588,7 @@
       <div class="mod-title-en" style="font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:2px; font-weight:400; margin-bottom:6px;">INDEPENDENT OSINT ANALYSIS — NOT AN OFFICIAL GOVERNMENT DOCUMENT</div>
       <div style="font-family:'Barlow Condensed',sans-serif; font-size:30px; font-weight:800; color:#fff; letter-spacing:1px; text-transform:uppercase; line-height:1;">Iranian Missile & Drone Attacks on the UAE</div>
       <div style="font-family:'Tajawal',sans-serif; font-size:16px; font-weight:700; color:var(--gold-light); direction:rtl; margin-top:4px;">تحليل الهجمات الإيرانية بالصواريخ والطائرات المسيّرة على الإمارات</div>
-      <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; letter-spacing:1px;">Day 1 to Day 3 · 28 Feb – 02 Mar 2026 · Sources: UAE MoD official communiqués</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; letter-spacing:1px;">Day 1 to Day 4 · 28 Feb – 03 Mar 2026 · Sources: UAE MoD official communiqués</div>
     </div>
   </div>
   <div class="mod-header-right">
@@ -616,16 +616,16 @@
       <div class="cumul-card-header">🚀 Ballistic Missiles</div>
       <div class="cumul-card-body">
         <div class="cumul-stat">
-          <div class="cumul-num">174</div>
+          <div class="cumul-num">186</div>
           <div class="cumul-lbl">Detected</div>
         </div>
         <div class="cumul-stat green">
-          <div class="cumul-num">161</div>
+          <div class="cumul-num">172</div>
           <div class="cumul-lbl">Intercepted</div>
         </div>
         <div class="cumul-stat red">
-          <div class="cumul-num">13</div>
-          <div class="cumul-lbl">Fell in Sea</div>
+          <div class="cumul-num">13+1</div>
+          <div class="cumul-lbl">Sea / Territory</div>
         </div>
       </div>
     </div>
@@ -652,15 +652,15 @@
       <div class="cumul-card-header">🛩 UAVs (Drones)</div>
       <div class="cumul-card-body">
         <div class="cumul-stat">
-          <div class="cumul-num">689</div>
+          <div class="cumul-num">812</div>
           <div class="cumul-lbl">Detected</div>
         </div>
         <div class="cumul-stat green">
-          <div class="cumul-num">645</div>
+          <div class="cumul-num">755</div>
           <div class="cumul-lbl">Intercepted</div>
         </div>
         <div class="cumul-stat red">
-          <div class="cumul-num">44</div>
+          <div class="cumul-num">57</div>
           <div class="cumul-lbl">Impacted on Territory</div>
         </div>
       </div>
@@ -676,21 +676,18 @@
       <div style="font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--navy); direction:rtl;">الحجم اليومي حسب نوع الذخيرة</div>
     </div>
     <div class="chart-note">
-      Bar width = √(count) scaled to type maximum — preserves volume hierarchy across days while keeping small values visible.
-      Green = intercepted · Red = impacted on territory · Blue = fell in sea · % shown inside bar = interception rate.
+      <strong>Top bar</strong> = composition per day (fills 100% — shows ballistic / cruise / UAV split) · <strong>Bottom bar</strong> = total volume scaled to biggest day (D2, 362) · Hover for details.
     </div>
 
-    <!-- Rendered by JS below for correctness -->
     <div id="chart-rows"></div>
 
     <div class="chart-legend">
-      <div class="leg"><div class="leg-box" style="background:#1a7a4a;"></div>Intercepted (ballistic)</div>
-      <div class="leg"><div class="leg-box" style="background:#e67e22;"></div>Intercepted (cruise)</div>
-      <div class="leg"><div class="leg-box" style="background:#2471a3;"></div>Intercepted (UAV)</div>
-      <div class="leg"><div class="leg-box" style="background:#2e86ab;"></div>Fell in Sea</div>
-      <div class="leg"><div class="leg-box" style="background:#c0392b;"></div>Impacted on Territory</div>
-      <div class="leg"><div class="leg-box" style="background:#e8e4df; border:1px solid #ccc;"></div>None</div>
-      <div style="margin-left:auto; font-size:11px; color:var(--sub);">Scale: √(count) — D1 ballistic (137) is wider than D3 (9), cruise stays visible</div>
+      <div class="leg"><div class="leg-box" style="background:#c0392b;"></div>Ballistic (intercepted)</div>
+      <div class="leg"><div class="leg-box" style="background:#e67e22;"></div>Cruise (intercepted)</div>
+      <div class="leg"><div class="leg-box" style="background:#2471a3;"></div>UAV (intercepted)</div>
+      <div class="leg"><div class="leg-box" style="background:repeating-linear-gradient(135deg,#c0392b,#c0392b 2px,#c0392b33 2px,#c0392b33 7px);"></div>Fell in sea (diagonal stripes)</div>
+      <div class="leg"><div class="leg-box" style="background:#7b1a12;"></div>Impacted on territory (dark solid)</div>
+      <div class="leg" style="margin-left:auto;"><div class="leg-box" style="background:var(--navy);opacity:0.25;height:6px;margin-top:4px;"></div>Volume bar (scaled to D2)</div>
     </div>
   </div>
 
@@ -739,14 +736,22 @@
             <td>163</td>
             <td><span class="delta-down">▼ −55%</span></td>
           </tr>
+          <tr>
+            <td>D4 — 03 Mar</td>
+            <td>12</td>
+            <td>0</td>
+            <td>123</td>
+            <td>135</td>
+            <td><span class="delta-down">▼ −17%</span></td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>
             <td>TOTAL</td>
-            <td>174</td>
+            <td>186</td>
             <td>8</td>
-            <td>689</td>
-            <td>871</td>
+            <td>812</td>
+            <td>1006</td>
             <td></td>
           </tr>
         </tfoot>
@@ -813,6 +818,11 @@
           <td>02 Mar 2026</td>
           <td><a class="src-link" href="https://www.instagram.com/p/DVZUQyck-0N/?hl=en" target="_blank">@modgovae — Post D3</a></td>
         </tr>
+        <tr>
+          <td><strong>D4</strong></td>
+          <td>03 Mar 2026</td>
+          <td><a class="src-link" href="https://gulfnews.com/world/mena/us-israel-war-on-iran-day-4-uae-have-dealt-with-186-ballistic-missiles-812-iranian-drones-1.500461540" target="_blank">Gulf News D4 live — UAE MoD briefing 04:02 PM</a></td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -827,169 +837,165 @@
 </div>
 
 <script>
-  // DATA
-  const types = [
-    {
-      label: 'Ballistic\nMissiles',
-      color: '#1a7a4a',
-      days: [
-        { detected: 137, intercepted: 132, sea: 5,  land: 0  },
-        { detected: 28,  intercepted: 20,  sea: 8,  land: 0  },
-        { detected: 9,   intercepted: 9,   sea: 0,  land: 0  },
-      ]
-    },
-    {
-      label: 'Cruise\nMissiles',
-      color: '#e67e22',
-      days: [
-        { detected: 0,  intercepted: 0,  sea: 0, land: 0 },
-        { detected: 2,  intercepted: 2,  sea: 0, land: 0 },
-        { detected: 6,  intercepted: 6,  sea: 0, land: 0 },
-      ]
-    },
-    {
-      label: 'UAVs\n(Drones)',
-      color: '#2471a3',
-      days: [
-        { detected: 209, intercepted: 195, sea: 0, land: 14 },
-        { detected: 332, intercepted: 311, sea: 0, land: 21 },
-        { detected: 148, intercepted: 139, sea: 0, land: 9  },
-      ]
-    }
+  const days = [
+    { label: 'D1', date: '28 Feb',
+      ballistic: { total: 137, intercepted: 132, sea: 5,  land: 0  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 209, intercepted: 195, sea: 0,  land: 14 },
+      grandTotal: 346 },
+    { label: 'D2', date: '01 Mar',
+      ballistic: { total: 28,  intercepted: 20,  sea: 8,  land: 0  },
+      cruise:    { total: 2,   intercepted: 2,   sea: 0,  land: 0  },
+      uav:       { total: 332, intercepted: 311, sea: 0,  land: 21 },
+      grandTotal: 362 },
+    { label: 'D3', date: '02 Mar',
+      ballistic: { total: 9,   intercepted: 9,   sea: 0,  land: 0  },
+      cruise:    { total: 6,   intercepted: 6,   sea: 0,  land: 0  },
+      uav:       { total: 148, intercepted: 139, sea: 0,  land: 9  },
+      grandTotal: 163 },
+    { label: 'D4', date: '03 Mar',
+      ballistic: { total: 12,  intercepted: 11,  sea: 0,  land: 1  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 123, intercepted: 110, sea: 0,  land: 13 },
+      grandTotal: 135 },
   ];
 
-  const dayLabels = ['D1', 'D2', 'D3'];
-  const dayDates  = ['28 Feb', '01 Mar', '02 Mar'];
+  const maxTotal = Math.max(...days.map(d => d.grandTotal)); // 362
 
-  // Global max detected across ALL types → shared sqrt scale
-  const globalMax = Math.max(...types.flatMap(t => t.days.map(d => d.detected)));
-  const sqrtMax = Math.sqrt(globalMax); // sqrt(332)
+  const baseColors = {
+    ballistic: '#c0392b',
+    cruise:    '#e67e22',
+    uav:       '#2471a3',
+  };
 
-  function pct(val) {
-    // sqrt scale: bar total width = sqrt(val)/sqrtMax * 100%
-    if (val === 0) return 0;
-    return (Math.sqrt(val) / sqrtMax * 100).toFixed(2);
-  }
+  // Darker shades for non-intercepted (sea/land)
+  const darkColors = {
+    ballistic: '#7b1a12',
+    cruise:    '#a05000',
+    uav:       '#0f2d5c',
+  };
+
+  const deltas = [
+    null,
+    { ballistic: -80, cruise: 'new', uav: +59,  total: +5  },
+    { ballistic: -68, cruise: +200,  uav: -55,   total: -55 },
+    { ballistic: +33, cruise: null,  uav: -17,   total: -17 },
+  ];
 
   const container = document.getElementById('chart-rows');
 
-  types.forEach((type, ti) => {
-    // Type row wrapper
-    const rowDiv = document.createElement('div');
-    rowDiv.className = 'type-chart-row';
+  days.forEach((day, di) => {
+    const wrapper = document.createElement('div');
+    wrapper.style.cssText = 'display:flex;align-items:center;gap:14px;margin-bottom:18px;';
 
-    const labelDiv = document.createElement('div');
-    labelDiv.className = 'type-label';
-    labelDiv.innerHTML = type.label.replace('\n', '<br>');
-    rowDiv.appendChild(labelDiv);
+    // Day label
+    const tag = document.createElement('div');
+    tag.style.cssText = 'width:24px;flex-shrink:0;text-align:center;';
+    tag.innerHTML = `<div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);">${day.label}</div><div style="font-size:9px;color:#aaa;">${day.date}</div>`;
+    wrapper.appendChild(tag);
 
-    const daysDiv = document.createElement('div');
-    daysDiv.className = 'days-bars';
+    // Bar column
+    const barCol = document.createElement('div');
+    barCol.style.cssText = 'flex:1;display:flex;flex-direction:column;gap:4px;';
 
-    type.days.forEach((day, di) => {
-      const barRow = document.createElement('div');
-      barRow.className = 'day-bar-row';
+    // --- TOP BAR: stacked composition, always 100% ---
+    const topTrack = document.createElement('div');
+    topTrack.style.cssText = 'height:28px;background:#f0ede8;border:1px solid var(--border);border-radius:2px;position:relative;overflow:hidden;display:flex;';
 
-      const tag = document.createElement('div');
-      tag.className = 'day-tag';
-      tag.textContent = dayLabels[di];
-      barRow.appendChild(tag);
+    const segKeys = ['ballistic', 'cruise', 'uav'];
 
-      const track = document.createElement('div');
-      track.className = 'bar-track';
+    segKeys.forEach(key => {
+      const seg = day[key];
+      if (seg.total === 0) return;
 
-      const totalW = parseFloat(pct(day.detected));
+      const segPct = (seg.total / day.grandTotal * 100).toFixed(2);
+      const interceptPct = (seg.intercepted / seg.total * 100).toFixed(2);
+      const seaPct  = (seg.sea  / seg.total * 100).toFixed(2);
+      const landPct = (seg.land / seg.total * 100).toFixed(2);
 
-      if (day.detected === 0) {
-        track.style.background = '#e8e4df';
-        track.innerHTML = `<div style="position:absolute;inset:0;display:flex;align-items:center;padding-left:10px;font-size:11px;color:var(--sub);">— none detected</div>`;
-      } else {
-        // Outer container: sqrt-scaled width
-        const outer = document.createElement('div');
-        outer.style.cssText = `position:absolute;left:0;top:0;bottom:0;width:0%;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);overflow:hidden;display:flex;`;
-        outer.dataset.targetWidth = totalW + '%';
+      // Outer container for this weapon type
+      const outer = document.createElement('div');
+      outer.style.cssText = `width:0%;height:100%;display:flex;flex-shrink:0;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);overflow:hidden;`;
+      outer.dataset.target = segPct + '%';
 
-        // Proportions within the bar: intercept / sea / land of detected
-        const interceptPct = (day.intercepted / day.detected * 100).toFixed(1);
-        const seaPct       = (day.sea         / day.detected * 100).toFixed(1);
-        const landPct      = (day.land        / day.detected * 100).toFixed(1);
-        const interceptRate = interceptPct;
-
-        // Intercept segment
+      // Sub-segment: intercepted (solid)
+      if (seg.intercepted > 0) {
         const iSeg = document.createElement('div');
-        iSeg.style.cssText = `width:${interceptPct}%;background:${type.color};height:100%;display:flex;align-items:center;padding-left:7px;overflow:hidden;white-space:nowrap;font-size:11px;font-weight:700;color:white;flex-shrink:0;`;
-        iSeg.textContent = `${day.intercepted} (${interceptRate}%)`;
+        iSeg.style.cssText = `width:${interceptPct}%;background:${baseColors[key]};height:100%;flex-shrink:0;cursor:crosshair;`;
+        iSeg.classList.add('has-tip');
+        iSeg.dataset.tip = `${key.charAt(0).toUpperCase()+key.slice(1)} — Intercepted: ${seg.intercepted}`;
         outer.appendChild(iSeg);
-
-        // Sea segment
-        if (day.sea > 0) {
-          const sSeg = document.createElement('div');
-          sSeg.style.cssText = `width:${seaPct}%;background:#2e86ab;height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white;flex-shrink:0;overflow:hidden;`;
-          sSeg.textContent = day.sea > 1 ? `${day.sea} sea` : day.sea;
-          outer.appendChild(sSeg);
-        }
-
-        // Land/impact segment
-        if (day.land > 0) {
-          const lSeg = document.createElement('div');
-          lSeg.style.cssText = `width:${landPct}%;background:#c0392b;height:100%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:white;flex-shrink:0;overflow:hidden;`;
-          lSeg.textContent = `${day.land}`;
-          outer.appendChild(lSeg);
-        }
-
-        track.appendChild(outer);
-
-        // Animate after short delay
-        setTimeout(() => { outer.style.width = outer.dataset.targetWidth; }, 400 + (ti * 3 + di) * 80);
       }
 
-      barRow.appendChild(track);
-
-      const totalLabel = document.createElement('div');
-      totalLabel.className = 'bar-total-label';
-
-      // Deltas vs previous day
-      const deltas = {
-        0: { // Ballistic
-          0: null,
-          1: { pct: -80, dir: 'down' },
-          2: { pct: -68, dir: 'down' }
-        },
-        1: { // Cruise
-          0: null,
-          1: { pct: null, dir: 'up', label: 'new' },
-          2: { pct: 200, dir: 'up' }
-        },
-        2: { // UAVs
-          0: null,
-          1: { pct: 59, dir: 'up' },
-          2: { pct: -55, dir: 'down' }
-        }
-      };
-
-      const delta = deltas[ti][di];
-      let deltaHtml = '';
-      if (delta && day.detected > 0) {
-        const color = delta.dir === 'down' ? '#1a7a4a' : '#c0392b';
-        const arrow = delta.dir === 'down' ? '▼' : '▲';
-        const label = delta.label ? delta.label : (delta.pct > 0 ? `+${delta.pct}%` : `${delta.pct}%`);
-        deltaHtml = `<span style="font-size:10px;font-weight:700;color:${color};">${arrow} ${label}</span>`;
+      // Sub-segment: fell in sea (darker + diagonal stripes)
+      if (seg.sea > 0) {
+        const sSeg = document.createElement('div');
+        sSeg.style.cssText = `width:${seaPct}%;height:100%;flex-shrink:0;cursor:crosshair;background:repeating-linear-gradient(135deg,${baseColors[key]},${baseColors[key]} 2px,${baseColors[key]}33 2px,${baseColors[key]}33 7px);`;
+        sSeg.classList.add('has-tip');
+        sSeg.dataset.tip = `${key.charAt(0).toUpperCase()+key.slice(1)} — Fell in sea: ${seg.sea}`;
+        outer.appendChild(sSeg);
       }
 
-      totalLabel.innerHTML = `<div style="display:flex;align-items:baseline;gap:5px;"><strong>${day.detected}</strong>${deltaHtml}</div><span style="font-size:10px;color:var(--sub);">detected</span>`;
-      barRow.appendChild(totalLabel);
+      // Sub-segment: impacted on land (darker + cross-hatch)
+      if (seg.land > 0) {
+        const lSeg = document.createElement('div');
+        lSeg.style.cssText = `width:${landPct}%;height:100%;flex-shrink:0;cursor:crosshair;background:${darkColors[key]};`;
+        lSeg.classList.add('has-tip');
+        lSeg.dataset.tip = `${key.charAt(0).toUpperCase()+key.slice(1)} — Impacted on territory: ${seg.land}`;
+        outer.appendChild(lSeg);
+      }
 
-      daysDiv.appendChild(barRow);
+      topTrack.appendChild(outer);
+      setTimeout(() => { outer.style.width = outer.dataset.target; }, 300 + di * 100);
     });
 
-    rowDiv.appendChild(daysDiv);
-    container.appendChild(rowDiv);
+    barCol.appendChild(topTrack);
 
-    // Separator between types
-    if (ti < types.length - 1) {
-      const sep = document.createElement('div');
-      sep.className = 'type-separator';
-      container.appendChild(sep);
+    // --- BOTTOM BAR: volume scaled to max day ---
+    const botWrapper = document.createElement('div');
+    botWrapper.style.cssText = 'height:8px;background:#f0ede8;border:1px solid var(--border);border-radius:2px;position:relative;overflow:hidden;';
+    const botFill = document.createElement('div');
+    const volPct = (day.grandTotal / maxTotal * 100).toFixed(2);
+    botFill.style.cssText = `width:0%;height:100%;background:var(--navy);opacity:0.25;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);`;
+    botFill.dataset.target = volPct + '%';
+    botWrapper.appendChild(botFill);
+    barCol.appendChild(botWrapper);
+    setTimeout(() => { botFill.style.width = botFill.dataset.target; }, 400 + di * 100);
+
+    wrapper.appendChild(barCol);
+
+    // Right label: total + delta
+    const delta = deltas[di];
+    let deltaHtml = '';
+    if (delta) {
+      const d = delta.total;
+      const color = d < 0 ? '#1a7a4a' : '#c0392b';
+      const arrow = d < 0 ? '▼' : '▲';
+      deltaHtml = `<span style="font-size:10px;font-weight:700;color:${color};">${arrow} ${d > 0 ? '+' : ''}${d}%</span>`;
+    }
+
+    const totalLabel = document.createElement('div');
+    totalLabel.style.cssText = 'width:90px;flex-shrink:0;';
+    totalLabel.innerHTML = `<div style="display:flex;align-items:baseline;gap:4px;"><strong style="font-family:\'Barlow Condensed\',sans-serif;font-size:20px;color:var(--navy);">${day.grandTotal}</strong>${deltaHtml}</div><div style="font-size:10px;color:var(--sub);">total fired</div>`;
+    wrapper.appendChild(totalLabel);
+
+    container.appendChild(wrapper);
+  });
+
+  // Global floating tooltip
+  const tip = document.createElement('div');
+  tip.style.cssText = `position:fixed;background:var(--navy);color:white;font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;padding:5px 10px;border-radius:3px;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.1s;white-space:nowrap;border-left:3px solid var(--gold);`;
+  document.body.appendChild(tip);
+
+  document.addEventListener('mousemove', e => {
+    const el = e.target.closest('.has-tip');
+    if (el) {
+      tip.textContent = el.dataset.tip;
+      tip.style.opacity = '1';
+      tip.style.left = (e.clientX + 12) + 'px';
+      tip.style.top  = (e.clientY - 28) + 'px';
+    } else {
+      tip.style.opacity = '0';
     }
   });
 </script>
