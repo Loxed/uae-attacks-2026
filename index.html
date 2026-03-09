@@ -610,11 +610,11 @@
       <div class="mod-title-en" style="font-size:11px; color:rgba(255,255,255,0.5); letter-spacing:2px; font-weight:400; margin-bottom:6px;">INDEPENDENT OSINT ANALYSIS — NOT AN OFFICIAL GOVERNMENT DOCUMENT</div>
       <div style="font-family:'Barlow Condensed',sans-serif; font-size:30px; font-weight:800; color:#fff; letter-spacing:1px; text-transform:uppercase; line-height:1;">Iranian Missile & Drone Attacks on the UAE</div>
       <div style="font-family:'Tajawal',sans-serif; font-size:16px; font-weight:700; color:var(--gold-light); direction:rtl; margin-top:4px;">تحليل الهجمات الإيرانية بالصواريخ والطائرات المسيّرة على الإمارات</div>
-      <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; letter-spacing:1px;">Day 1 to Day 4 · 28 Feb – 03 Mar 2026 · Sources: UAE MoD official official statements</div>
+      <div style="font-size:12px; color:rgba(255,255,255,0.45); margin-top:6px; letter-spacing:1px;" id="header-date-range"></div>
     </div>
   </div>
   <div class="mod-header-right">
-    <div class="mod-date" id="report-date">03 – 03 – 2026</div>
+    <div class="mod-date" id="report-date"></div>
     <div style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:4px; letter-spacing:1px;">COMPILED STRIKE REPORT</div>
     <div style="font-size:10px; color:rgba(255,255,255,0.35); margin-top:3px; letter-spacing:1px;" id="last-updated">LAST UPDATED: —</div>
   </div>
@@ -632,96 +632,33 @@
 <div class="content">
 
   <!-- CUMULATIVE TOTALS -->
-  <div class="section-label">Cumulative Totals — All Three Days <div class="line"></div> <span class="ar">المجاميع التراكمية — الأيام الثلاثة</span></div>
-  <div class="cumul-grid">
-
-    <div class="cumul-card missile">
-      <div class="cumul-card-header">🚀 Ballistic Missiles</div>
-      <div class="cumul-card-body">
-        <div class="cumul-stat">
-          <div class="cumul-num">186</div>
-          <div class="cumul-lbl">Detected</div>
-        </div>
-        <div class="cumul-stat green">
-          <div class="cumul-num">172</div>
-          <div class="cumul-lbl">Intercepted</div>
-        </div>
-        <div class="cumul-stat red">
-          <div class="cumul-num">13</div>
-          <div class="cumul-lbl">Fell in Sea</div>
-        </div>
-        <div class="cumul-stat red" style="grid-column:1/-1;border-top:1px solid #f5c0bb;padding-top:6px;margin-top:2px;">
-          <div style="font-size:11px;color:var(--red);font-weight:700;">⚠ 1 ballistic missile impacted UAE territory (Day 4)</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cumul-card cruise">
-      <div class="cumul-card-header">✈ Cruise Missiles</div>
-      <div class="cumul-card-body">
-        <div class="cumul-stat">
-          <div class="cumul-num">8</div>
-          <div class="cumul-lbl">Detected</div>
-        </div>
-        <div class="cumul-stat green">
-          <div class="cumul-num">8</div>
-          <div class="cumul-lbl">Intercepted</div>
-        </div>
-        <div class="cumul-stat">
-          <div class="cumul-num" style="color:var(--sub)">—</div>
-          <div class="cumul-lbl">Minor collateral</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cumul-card drone">
-      <div class="cumul-card-header">🛩 UAV / Drones</div>
-      <div class="cumul-card-body">
-        <div class="cumul-stat">
-          <div class="cumul-num">812</div>
-          <div class="cumul-lbl">Detected</div>
-        </div>
-        <div class="cumul-stat green">
-          <div class="cumul-num">755</div>
-          <div class="cumul-lbl">Intercepted</div>
-        </div>
-        <div class="cumul-stat red">
-          <div class="cumul-num">57</div>
-          <div class="cumul-lbl">Impacted on Territory</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
+  <div class="section-label" id="cumul-section-label"></div>
+  <div class="cumul-grid" id="cumul-cards"></div>
 
   <!-- DAILY BREAKDOWN CHART -->
-  <div class="section-label">Daily Breakdown — Intercepted vs. Impact <div class="line"></div> <span class="ar">التفصيل اليومي — الاعتراض مقابل الإصابة</span></div>
+  <div class="section-label">Daily Volume — Munitions by Type &amp; Outcome <div class="line"></div> <span class="ar">الحجم اليومي حسب نوع الذخيرة ونتيجتها</span></div>
   <div class="chart-section">
-    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:4px;">
-      <div class="chart-title">Volume per Day by Munition Type</div>
-      <div style="font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--navy); direction:rtl;">الحجم اليومي حسب نوع الذخيرة</div>
+    <div class="chart-note" id="chart-note-text"></div>
+    <div id="summary-bar-wrap" style="margin-bottom:18px;">
+      <div style="font-size:9px;font-weight:700;letter-spacing:2px;color:var(--sub);text-transform:uppercase;margin-bottom:6px;">Total munitions — all days</div>
+      <div id="summary-bar" style="height:28px;background:#f0ede8;border:1px solid var(--border);border-radius:2px;overflow:hidden;display:flex;"></div>
+      <div id="summary-bar-labels" style="display:flex;gap:16px;margin-top:6px;flex-wrap:wrap;"></div>
     </div>
-    <div class="chart-note">
-      <strong>Top bar</strong> = composition per day (fills 100% — shows ballistic / cruise / UAV split) · <strong>Bottom bar</strong> = total volume scaled to biggest day (Day 2, 362) · Hover for details.
-    </div>
-
-    <div id="chart-rows"></div>
-    <div style="margin:20px 0 8px;">
-      <div style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--sub);text-transform:uppercase;margin-bottom:10px;">Daily Volume — Total Munitions Fired</div>
-      <div id="volume-bars" style="display:flex;align-items:flex-end;gap:12px;height:80px;"></div>
-    </div>
-
-    <div class="chart-legend">
-      <div class="leg"><div class="leg-box" style="background:#c0392b;"></div>Ballistic (intercepted)</div>
-      <div class="leg"><div class="leg-box" style="background:#e67e22;"></div>Cruise (intercepted)</div>
-      <div class="leg"><div class="leg-box" style="background:#2471a3;"></div>UAV / Drone (intercepted)</div>
-      <div class="leg"><div class="leg-box" style="background:repeating-linear-gradient(135deg,#666,#666 2px,#66666633 2px,#66666633 7px);"></div>Fell in sea (diagonal stripes)</div>
-      <div class="leg"><div class="leg-box" style="background:#444;"></div>Impacted on territory (dark solid)</div>
-      <div class="leg" style="margin-left:auto;"><div class="leg-box" style="background:var(--navy);opacity:0.25;height:6px;margin-top:4px;"></div>Volume bar (scaled to Day 2)</div>
+    <div id="chart-weeks"></div>
+    <div class="chart-legend" style="margin-top:12px;">
+      <div class="leg"><div class="leg-box" style="background:#c0392b;"></div>Ballistic intercepted</div>
+      <div class="leg"><div class="leg-box" style="background:#e67e22;"></div>Cruise intercepted</div>
+      <div class="leg"><div class="leg-box" style="background:#2471a3;"></div>UAV intercepted</div>
+      <div class="leg"><div class="leg-box" style="background:repeating-linear-gradient(135deg,#555,#555 2px,#55555533 2px,#55555533 7px);"></div>Fell in sea</div>
+      <div class="leg"><div class="leg-box" style="background:#111;"></div>Impacted on territory</div>
     </div>
   </div>
 
-  <!-- BOTTOM ROW -->
+
+  <!-- WEEK SUMMARIES (generated dynamically) -->
+  <div id="week-summaries"></div>
+
+    <!-- BOTTOM ROW -->
   <div class="bottom-grid">
 
     <!-- DAILY TOTALS TABLE -->
@@ -741,50 +678,8 @@
             <th>Δ Total</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Day 1 — 28 Feb</td>
-            <td>137</td>
-            <td>0</td>
-            <td>209</td>
-            <td>346</td>
-            <td style="color:var(--sub)">—</td>
-          </tr>
-          <tr>
-            <td>Day 2 — 01 Mar</td>
-            <td>28</td>
-            <td>2</td>
-            <td>332</td>
-            <td>362</td>
-            <td><span class="delta-up">▲ +5%</span></td>
-          </tr>
-          <tr>
-            <td>Day 3 — 02 Mar</td>
-            <td>9</td>
-            <td>6</td>
-            <td>148</td>
-            <td>163</td>
-            <td><span class="delta-down">▼ −55%</span></td>
-          </tr>
-          <tr>
-            <td>Day 4 — 03 Mar</td>
-            <td>12</td>
-            <td>0</td>
-            <td>123</td>
-            <td>135</td>
-            <td><span class="delta-down">▼ −17%</span></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td>TOTAL</td>
-            <td>186</td>
-            <td>8</td>
-            <td>812</td>
-            <td>1006</td>
-            <td></td>
-          </tr>
-        </tfoot>
+        <tbody id="daily-table-body"></tbody>
+        <tfoot id="daily-table-foot"></tfoot>
       </table>
     </div>
 
@@ -796,15 +691,17 @@
       </div>
       <div class="casualty-row">
         <div class="cas-item">
-          <div class="cas-num dead">3</div>
+          <div class="cas-num dead">4</div>
           <div class="cas-lbl">Fatalities</div>
         </div>
         <div class="cas-item">
-          <div class="cas-num injured">68</div>
+          <div class="cas-num injured">117</div>
           <div class="cas-lbl">Light Injuries</div>
         </div>
       </div>
       <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--sub); line-height: 1.8;">
+        › <strong>3 fatalities</strong>: Pakistani, Nepalese and Bangladeshi nationals.<br>
+        › <strong>112 injuries</strong>: Emirati, Egyptian, Sudanese, Ethiopian, Filipino, Pakistani, Iranian, Indian, Bangladeshi, Sri Lankan, Azerbaijani, Yemeni, Ugandan, Eritrean, Lebanese, Afghan, Bahraini, Comorian and Turkish nationals.<br>
         › Audible sounds across the country result from interception operations by air defense systems and fighter jets — <strong>not direct impacts</strong>.<br>
         › Minor to moderate material damage reported on some civilian properties.<br>
         › The UAE reserves its full right to respond to this escalation in accordance with international law.<br>
@@ -815,6 +712,8 @@
   </div>
 
 </div>
+
+</div><!-- /content -->
 
 <!-- SOURCES -->
 <div style="max-width:1100px; margin:0 auto; padding: 0 40px 30px;">
@@ -851,7 +750,37 @@
         <tr>
           <td><strong>Day 4</strong></td>
           <td>03 Mar 2026</td>
-          <td><a class="src-link" href="https://gulfnews.com/world/mena/us-israel-war-on-iran-day-4-uae-have-dealt-with-186-ballistic-missiles-812-iranian-drones-1.500461540" target="_blank">Gulf News D4 live — UAE MoD briefing 04:02 PM</a></td>
+          <td><a class="src-link" href="https://x.com/modgovae/status/2028844714297065933" target="_blank">@modgovae — Post Day 4</a></td>
+        </tr>
+        <tr>
+          <td><strong>Day 5</strong></td>
+          <td>04 Mar 2026</td>
+          <td><a class="src-link" href="https://www.thenationalnews.com/news/mena/2026/03/03/live-israel-us-iran-strikes-uae/" target="_blank">The National News — Day 5 live</a></td>
+        </tr>
+        <tr>
+          <td><strong>Day 6</strong></td>
+          <td>05 Mar 2026</td>
+          <td><a class="src-link" href="https://xcancel.com/modgovae/status/2029540323756753139#m" target="_blank">@modgovae — Post Day 6</a></td>
+        </tr>
+        <tr>
+          <td><strong>Day 7</strong></td>
+          <td>06 Mar 2026</td>
+          <td><a class="src-link" href="https://www.thenationalnews.com/uae/2026/03/06/uae-air-defences-intercept-9-ballistic-missiles-109-drones/" target="_blank">The National News — Day 7</a></td>
+        </tr>
+        <tr>
+          <td><strong>Day 8</strong></td>
+          <td>07 Mar 2026</td>
+          <td><a class="src-link" href="https://www.instagram.com/p/DVlM8ntkn3U/?hl=en" target="_blank">@modgovae — Post Day 8</a></td>
+        </tr>
+        <tr>
+          <td><strong>Day 9</strong></td>
+          <td>08 Mar 2026</td>
+          <td><a class="src-link" href="https://www.instagram.com/p/DVnua83kiOl/?hl=en" target="_blank">@modgovae — Post Day 9</a></td>
+        </tr>
+        <tr>
+          <td><strong>Day 10</strong></td>
+          <td>09 Mar 2026</td>
+          <td><a class="src-link" href="https://www.instagram.com/p/DVqaUSRiAOt/?hl=en" target="_blank">@modgovae — Post Day 10</a></td>
         </tr>
       </tbody>
     </table>
@@ -882,168 +811,550 @@
       cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
       uav:       { total: 123, intercepted: 110, sea: 0,  land: 13 },
       grandTotal: 135 },
+    { label: 'Day 5', date: '04 Mar',
+      ballistic: { total: 3,   intercepted: 3,   sea: 0,  land: 0  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 129, intercepted: 121, sea: 0,  land: 8  },
+      grandTotal: 132 },
+    { label: 'Day 6', date: '05 Mar',
+      ballistic: { total: 7,   intercepted: 6,   sea: 0,  land: 1  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 131, intercepted: 125, sea: 0,  land: 6  },
+      grandTotal: 138 },
+    { label: 'Day 7', date: '06 Mar',
+      ballistic: { total: 9,   intercepted: 9,   sea: 0,  land: 0  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 112, intercepted: 109, sea: 0,  land: 3  },
+      grandTotal: 121 },
+    { label: 'Day 8', date: '07 Mar',
+      ballistic: { total: 16,  intercepted: 15,  sea: 1,  land: 0  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 121, intercepted: 119, sea: 0,  land: 2  },
+      grandTotal: 137 },
+    { label: 'Day 9', date: '08 Mar',
+      ballistic: { total: 17,  intercepted: 16,  sea: 1,  land: 0  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 117, intercepted: 113, sea: 0,  land: 4  },
+      grandTotal: 134 },
+    { label: 'Day 10', date: '09 Mar',
+      ballistic: { total: 15,  intercepted: 12,  sea: 3,  land: 0  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 18,  intercepted: 17,  sea: 0,  land: 1  },
+      grandTotal: 33 },
   ];
 
   const grandAllTotal = days.reduce((s,d) => s + d.grandTotal, 0);
-  const maxTotal = grandAllTotal; // volume bar scales to total 1006
+  const maxTotal = grandAllTotal;
 
-  const baseColors = {
-    ballistic: '#c0392b',
-    cruise:    '#e67e22',
-    uav:       '#2471a3',
+  const baseColors = { ballistic: '#c0392b', cruise: '#e67e22', uav: '#2471a3' };
+  const darkColors  = { ballistic: '#7b1a12', cruise: '#a05000', uav: '#0f2d5c' };
+  const seaPattern  = function(col) {
+    return 'repeating-linear-gradient(135deg,' + col + ',' + col + ' 2px,' + col + '33 2px,' + col + '33 7px)';
   };
 
-  // Darker shades for non-intercepted (sea/land)
-  const darkColors = {
-    ballistic: '#7b1a12',
-    cruise:    '#a05000',
-    uav:       '#0f2d5c',
-  };
-
-  const deltas = [
-    null,
-    { ballistic: -80, cruise: 'new', uav: +59,  total: +5  },
-    { ballistic: -68, cruise: +200,  uav: -55,   total: -55 },
-    { ballistic: +33, cruise: null,  uav: -17,   total: -17 },
-  ];
-
-  const container = document.getElementById('chart-rows');
-
-  days.forEach((day, di) => {
-    const wrapper = document.createElement('div');
-    wrapper.style.cssText = 'display:flex;align-items:center;gap:14px;margin-bottom:18px;';
-
-    // Day label
-    const tag = document.createElement('div');
-    tag.style.cssText = 'width:44px;flex-shrink:0;text-align:center;';
-    tag.innerHTML = `<div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);">${day.label}</div><div style="font-size:9px;color:#aaa;">${day.date}</div>`;
-    wrapper.appendChild(tag);
-
-    // Bar column
-    const barCol = document.createElement('div');
-    barCol.style.cssText = 'flex:1;display:flex;flex-direction:column;gap:4px;';
-
-    // --- TOP BAR: stacked composition, always 100% ---
-    const topTrack = document.createElement('div');
-    topTrack.style.cssText = 'height:28px;background:#f0ede8;border:1px solid var(--border);border-radius:2px;position:relative;overflow:hidden;display:flex;';
-
-    const segKeys = ['ballistic', 'cruise', 'uav'];
-
-    segKeys.forEach(key => {
-      const seg = day[key];
-      if (seg.total === 0) return;
-
-      const segPct = (seg.total / day.grandTotal * 100).toFixed(2);
-      const interceptPct = (seg.intercepted / seg.total * 100).toFixed(2);
-      const seaPct  = (seg.sea  / seg.total * 100).toFixed(2);
-      const landPct = (seg.land / seg.total * 100).toFixed(2);
-
-      // Outer container for this weapon type
-      const outer = document.createElement('div');
-      outer.style.cssText = `width:0%;height:100%;display:flex;flex-shrink:0;transition:width 0.8s cubic-bezier(0.4,0,0.2,1);overflow:hidden;`;
-      outer.dataset.target = segPct + '%';
-
-      // Sub-segment: intercepted (solid)
-      if (seg.intercepted > 0) {
-        const iSeg = document.createElement('div');
-        iSeg.style.cssText = `width:${interceptPct}%;background:${baseColors[key]};height:100%;flex-shrink:0;cursor:crosshair;`;
-        iSeg.classList.add('has-tip');
-        iSeg.dataset.tip = `${key.charAt(0).toUpperCase()+key.slice(1)} — Intercepted: ${seg.intercepted}`;
-        outer.appendChild(iSeg);
-      }
-
-      // Sub-segment: fell in sea (darker + diagonal stripes)
-      if (seg.sea > 0) {
-        const sSeg = document.createElement('div');
-        sSeg.style.cssText = `width:${seaPct}%;height:100%;flex-shrink:0;cursor:crosshair;background:repeating-linear-gradient(135deg,${baseColors[key]},${baseColors[key]} 2px,${baseColors[key]}33 2px,${baseColors[key]}33 7px);`;
-        sSeg.classList.add('has-tip');
-        sSeg.dataset.tip = `${key.charAt(0).toUpperCase()+key.slice(1)} — Fell in sea: ${seg.sea}`;
-        outer.appendChild(sSeg);
-      }
-
-      // Sub-segment: impacted on land (darker + cross-hatch)
-      if (seg.land > 0) {
-        const lSeg = document.createElement('div');
-        lSeg.style.cssText = `width:${landPct}%;height:100%;flex-shrink:0;cursor:crosshair;background:${darkColors[key]};`;
-        lSeg.classList.add('has-tip');
-        lSeg.dataset.tip = `${key.charAt(0).toUpperCase()+key.slice(1)} — Impacted on territory: ${seg.land}`;
-        outer.appendChild(lSeg);
-      }
-
-      topTrack.appendChild(outer);
-      setTimeout(() => { outer.style.width = outer.dataset.target; }, 300 + di * 100);
-    });
-
-    barCol.appendChild(topTrack);
-
-
-
-    wrapper.appendChild(barCol);
-
-    // Right label: total + delta
-    const delta = deltas[di];
-    let deltaHtml = '';
-    if (delta) {
-      const d = delta.total;
-      const color = d < 0 ? '#1a7a4a' : '#c0392b';
-      const arrow = d < 0 ? '▼' : '▲';
-      deltaHtml = `<span style="font-size:10px;font-weight:700;color:${color};">${arrow} ${d > 0 ? '+' : ''}${d}%</span>`;
-    }
-
-    const totalLabel = document.createElement('div');
-    totalLabel.style.cssText = 'width:90px;flex-shrink:0;';
-    totalLabel.innerHTML = `<div style="display:flex;align-items:baseline;gap:4px;"><strong style="font-family:\'Barlow Condensed\',sans-serif;font-size:20px;color:var(--navy);">${day.grandTotal}</strong>${deltaHtml}</div><div style="font-size:10px;color:var(--sub);">total fired</div>`;
-    wrapper.appendChild(totalLabel);
-
-    container.appendChild(wrapper);
+  var MAX_VOL   = Math.max.apply(null, days.map(function(d){ return d.grandTotal; }));
+  var BAR_MAX_H = 220;
+  
+  // Calculate volume deltas (percentage change from previous day)
+  var volDeltas = days.map(function(day, i) {
+    if (i === 0) return ''; // No previous day for Day 1
+    var prev = days[i - 1].grandTotal;
+    var curr = day.grandTotal;
+    var pctChange = ((curr - prev) / prev * 100).toFixed(0);
+    var sign = pctChange > 0 ? '+' : '';
+    return sign + pctChange + '%';
   });
 
-  // Live date + last updated
-  function pad(n) { return String(n).padStart(2,'0'); }
-  function updateDate() {
-    const now = new Date();
-    const date = `${pad(now.getDate())} – ${pad(now.getMonth()+1)} – ${now.getFullYear()}`;
-    document.getElementById('report-date').textContent = date;
-  }
-  updateDate();
-  setInterval(updateDate, 60000);
-  document.getElementById('last-updated').textContent = 'LAST UPDATED: 03-03-2026 16:02';
+  // ── Helper: format number with commas ────────────────────────────
+  function fmt(n) { return n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
 
-  // Volume trend bars
-  const volContainer = document.getElementById('volume-bars');
-  if (volContainer) {
-    const maxVol = Math.max(...days.map(d => d.grandTotal));
-    const volDeltas = ['+100%', '+5%', '−55%', '−17%'];
-    days.forEach((day, di) => {
-      const col = document.createElement('div');
-      col.style.cssText = 'display:flex;flex-direction:column;align-items:center;gap:3px;flex:1;height:100%;justify-content:flex-end;';
-      const barH = Math.round(day.grandTotal / maxVol * 52);
-      const bar = document.createElement('div');
-      bar.style.cssText = 'width:100%;height:0px;background:var(--navy);border-radius:2px 2px 0 0;transition:height 0.9s cubic-bezier(0.4,0,0.2,1);cursor:crosshair;';
-      bar.classList.add('has-tip');
-      bar.dataset.tip = day.label + ': ' + day.grandTotal + ' total munitions';
-      setTimeout(() => { bar.style.height = barH + 'px'; }, 700 + di * 120);
-      const numLbl = document.createElement('div');
-      numLbl.style.cssText = 'font-size:10px;font-weight:700;color:var(--navy);white-space:nowrap;';
-      numLbl.textContent = day.grandTotal;
-      const dLbl = document.createElement('div');
-      dLbl.style.cssText = 'font-size:9px;color:var(--sub);text-align:center;line-height:1.4;';
-      dLbl.textContent = day.label;
-      if (volDeltas[di]) {
-        const dTag = document.createElement('div');
-        const isDown = volDeltas[di].includes('−');
-        dTag.style.cssText = 'font-size:9px;font-weight:700;color:' + (isDown ? '#1a7a4a' : '#c0392b') + ';';
-        dTag.textContent = volDeltas[di];
-        dLbl.appendChild(dTag);
-      }
-      col.appendChild(bar);
-      col.appendChild(numLbl);
-      col.appendChild(dLbl);
-      volContainer.appendChild(col);
+  // ── Aggregate calculations ───────────────────────────────────────
+  var WEEK_SIZE = 7;
+  var numWeeks  = Math.ceil(days.length / WEEK_SIZE);
+
+  var agg = {
+    bal_total: days.reduce(function(s,d){ return s+d.ballistic.total; }, 0),
+    bal_int:   days.reduce(function(s,d){ return s+d.ballistic.intercepted; }, 0),
+    bal_sea:   days.reduce(function(s,d){ return s+d.ballistic.sea; }, 0),
+    bal_land:  days.reduce(function(s,d){ return s+d.ballistic.land; }, 0),
+    cru_total: days.reduce(function(s,d){ return s+d.cruise.total; }, 0),
+    cru_int:   days.reduce(function(s,d){ return s+d.cruise.intercepted; }, 0),
+    cru_sea:   days.reduce(function(s,d){ return s+d.cruise.sea; }, 0),
+    cru_land:  days.reduce(function(s,d){ return s+d.cruise.land; }, 0),
+    uav_total: days.reduce(function(s,d){ return s+d.uav.total; }, 0),
+    uav_int:   days.reduce(function(s,d){ return s+d.uav.intercepted; }, 0),
+    uav_sea:   days.reduce(function(s,d){ return s+d.uav.sea; }, 0),
+    uav_land:  days.reduce(function(s,d){ return s+d.uav.land; }, 0),
+  };
+
+  // Find peak day (overall)
+  var peakIdx = 0;
+  days.forEach(function(d, i) { if (d.grandTotal > days[peakIdx].grandTotal) peakIdx = i; });
+  var peakDay = days[peakIdx];
+  var lastDay = days[days.length - 1];
+  var firstDay = days[0];
+
+  // ── Header date range ────────────────────────────────────────────
+  var headerDateEl = document.getElementById('header-date-range');
+  if (headerDateEl) {
+    headerDateEl.textContent = firstDay.date + ' \u2013 ' + lastDay.date + ' 2026 \u00b7 Sources: UAE MoD official statements';
+  }
+
+  // ── Report date ──────────────────────────────────────────────────
+  var reportDateEl = document.getElementById('report-date');
+  if (reportDateEl) {
+    var today = new Date();
+    var dd = ('0' + today.getDate()).slice(-2);
+    var mm = ('0' + (today.getMonth() + 1)).slice(-2);
+    reportDateEl.textContent = dd + ' \u2013 ' + mm + ' \u2013 ' + today.getFullYear();
+  }
+  var lastUpdatedEl = document.getElementById('last-updated');
+  if (lastUpdatedEl) {
+    var now = new Date();
+    lastUpdatedEl.textContent = 'LAST UPDATED: ' + now.toLocaleDateString('en-GB', {day:'2-digit',month:'short',year:'numeric'}).toUpperCase();
+  }
+
+  // ── Cumulative section label ─────────────────────────────────────
+  var cumulLabel = document.getElementById('cumul-section-label');
+  if (cumulLabel) {
+    cumulLabel.innerHTML = 'Cumulative Totals \u2014 All ' + days.length + ' Days <div class="line"></div> <span class="ar">\u0627\u0644\u0645\u062c\u0627\u0645\u064a\u0639 \u0627\u0644\u062a\u0631\u0627\u0643\u0645\u064a\u0629</span>';
+  }
+
+  // ── Cumulative totals cards ──────────────────────────────────────
+  var cumulEl = document.getElementById('cumul-cards');
+  if (cumulEl) {
+    var bal_neutralised = agg.bal_int + agg.bal_sea;
+    var cardData = [
+      { cls: 'missile', label: 'Ballistic Missiles', stats: [
+        { val: fmt(agg.bal_total), lbl: 'Detected', cls: '' },
+        { val: fmt(agg.bal_int), lbl: 'Intercepted', cls: 'green' },
+        { val: agg.bal_sea ? fmt(agg.bal_sea) : (agg.bal_land ? fmt(agg.bal_land) : '\u2014'), lbl: agg.bal_sea ? 'Fell in Sea' : (agg.bal_land ? 'Hit Territory' : '\u2014'), cls: agg.bal_sea || agg.bal_land ? 'red' : '' }
+      ]},
+      { cls: 'cruise', label: 'Cruise Missiles', stats: [
+        { val: fmt(agg.cru_total), lbl: 'Detected', cls: '' },
+        { val: fmt(agg.cru_int), lbl: 'Intercepted', cls: 'green' },
+        { val: agg.cru_total ? (agg.cru_sea ? fmt(agg.cru_sea) : (agg.cru_land ? fmt(agg.cru_land) : '\u2014')) : '\u2014', lbl: agg.cru_sea ? 'Fell in Sea' : (agg.cru_land ? 'Hit Territory' : (agg.cru_total ? 'No impacts' : '\u2014')), cls: '' }
+      ]},
+      { cls: 'drone', label: 'UAV / Drones', stats: [
+        { val: fmt(agg.uav_total), lbl: 'Detected', cls: '' },
+        { val: fmt(agg.uav_int), lbl: 'Intercepted', cls: 'green' },
+        { val: agg.uav_land ? fmt(agg.uav_land) : '\u2014', lbl: agg.uav_land ? 'Impacted on Territory' : '\u2014', cls: agg.uav_land ? 'red' : '' }
+      ]}
+    ];
+    cardData.forEach(function(card) {
+      var html = '<div class="cumul-card ' + card.cls + '"><div class="cumul-card-header">' + card.label + '</div><div class="cumul-card-body">';
+      card.stats.forEach(function(s) {
+        html += '<div class="cumul-stat ' + s.cls + '"><div class="cumul-num">' + s.val + '</div><div class="cumul-lbl">' + s.lbl + '</div></div>';
+      });
+      html += '</div></div>';
+      cumulEl.insertAdjacentHTML('beforeend', html);
     });
   }
 
-  // Global floating tooltip
+  // ── Chart note ───────────────────────────────────────────────────
+  var chartNoteEl = document.getElementById('chart-note-text');
+  if (chartNoteEl) {
+    chartNoteEl.innerHTML = 'Bars scaled to ' + peakDay.label + ' (' + fmt(peakDay.grandTotal) + ' \u2014 peak day). Each bar stacks <strong style="color:#c0392b;">ballistic</strong> \u00b7 <strong style="color:#e67e22;">cruise</strong> \u00b7 <strong style="color:#2471a3;">UAV</strong> in absolute counts. Diagonal stripes = fell in sea \u00b7 Dark solid = impacted on territory. Hover for details.';
+  }
+
+  // ── Week summaries ───────────────────────────────────────────────
+  var weekSumEl = document.getElementById('week-summaries');
+  if (weekSumEl) {
+    var overallPeakTotal = peakDay.grandTotal;
+    var arabicWeekNames = ['\u0645\u0644\u062e\u0635 \u0627\u0644\u0623\u0633\u0628\u0648\u0639 \u0627\u0644\u0623\u0648\u0644', '\u0645\u0644\u062e\u0635 \u0627\u0644\u0623\u0633\u0628\u0648\u0639 \u0627\u0644\u062b\u0627\u0646\u064a', '\u0645\u0644\u062e\u0635 \u0627\u0644\u0623\u0633\u0628\u0648\u0639 \u0627\u0644\u062b\u0627\u0644\u062b', '\u0645\u0644\u062e\u0635 \u0627\u0644\u0623\u0633\u0628\u0648\u0639 \u0627\u0644\u0631\u0627\u0628\u0639'];
+
+    for (var w = 0; w < numWeeks; w++) {
+      var wDays = days.slice(w * WEEK_SIZE, (w + 1) * WEEK_SIZE);
+      var wFirstDay = wDays[0];
+      var wLastDay  = wDays[wDays.length - 1];
+      var isPartial = wDays.length < WEEK_SIZE;
+      var globalFirstIdx = w * WEEK_SIZE;
+      var globalLastIdx  = globalFirstIdx + wDays.length - 1;
+
+      // Week aggregates
+      var wTotal  = wDays.reduce(function(s,d){ return s+d.grandTotal; }, 0);
+      var wBal    = wDays.reduce(function(s,d){ return s+d.ballistic.total; }, 0);
+      var wBalInt = wDays.reduce(function(s,d){ return s+d.ballistic.intercepted; }, 0);
+      var wBalSea = wDays.reduce(function(s,d){ return s+d.ballistic.sea; }, 0);
+      var wBalLand= wDays.reduce(function(s,d){ return s+d.ballistic.land; }, 0);
+      var wCru    = wDays.reduce(function(s,d){ return s+d.cruise.total; }, 0);
+      var wCruInt = wDays.reduce(function(s,d){ return s+d.cruise.intercepted; }, 0);
+      var wUav    = wDays.reduce(function(s,d){ return s+d.uav.total; }, 0);
+      var wUavInt = wDays.reduce(function(s,d){ return s+d.uav.intercepted; }, 0);
+      var wUavSea = wDays.reduce(function(s,d){ return s+d.uav.sea; }, 0);
+      var wUavLand= wDays.reduce(function(s,d){ return s+d.uav.land; }, 0);
+
+      // Week peak
+      var wPeakIdx = 0;
+      wDays.forEach(function(d, i) { if (d.grandTotal > wDays[wPeakIdx].grandTotal) wPeakIdx = i; });
+      var wPeak = wDays[wPeakIdx];
+      var wPeakGlobalLabel = days[globalFirstIdx + wPeakIdx].label;
+
+      // Section label
+      var partialNote = isPartial ? ' <span style="color:var(--sub);font-weight:400;font-size:10px;">(partial \u2014 ' + wDays.length + ' of 7 days)</span>' : '';
+      var dayRange = 'D' + (globalFirstIdx + 1) + '\u2013D' + (globalLastIdx + 1);
+      var dateRange = wFirstDay.date + ' to ' + wLastDay.date + ' 2026';
+      var sectionTitle = (numWeeks === 1) ? dayRange + ' Summary \u2014 ' + dateRange : 'Week ' + (w + 1) + ' Summary \u2014 ' + dateRange;
+      var arLabel = arabicWeekNames[w] || ('\u0645\u0644\u062e\u0635 \u0627\u0644\u0623\u0633\u0628\u0648\u0639 ' + (w + 1));
+      var marginTop = (w === 0) ? '28px' : '4px';
+
+      var html = '<div class="section-label" style="margin-top:' + marginTop + ';">' + sectionTitle + partialNote + ' <div class="line"></div> <span class="ar">' + arLabel + '</span></div>';
+      html += '<div style="background:var(--card);border:1px solid var(--border);border-radius:4px;padding:20px;margin-bottom:24px;">';
+
+      // KPI strip
+      html += '<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border);">';
+      var kpis = [
+        { val: fmt(wTotal), label: 'Total Munitions', color: 'var(--navy)' },
+        { val: fmt(wBal),   label: 'Ballistic Missiles', color: 'var(--missile-color)' },
+        { val: fmt(wUav),   label: 'UAV / Drones', color: 'var(--drone-color)' },
+        { val: fmt(wCru),   label: 'Cruise Missiles', color: 'var(--cruise-color)' },
+      ];
+      kpis.forEach(function(k) {
+        html += '<div style="text-align:center;"><div style="font-family:\'Barlow Condensed\',sans-serif;font-size:36px;font-weight:800;color:' + k.color + ';">' + k.val + '</div>';
+        html += '<div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);text-transform:uppercase;">' + k.label + '</div></div>';
+      });
+      html += '</div>';
+
+      // Interception rates
+      html += '<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--border);">';
+
+      // Ballistic interception
+      html += '<div><div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);text-transform:uppercase;margin-bottom:6px;">Ballistic Missiles</div>';
+      if (wBal > 0) {
+        var bIntPct = (wBalInt / wBal * 100).toFixed(1);
+        var bSeaPct = (wBalSea / wBal * 100).toFixed(1);
+        var bLandPct = (wBalLand / wBal * 100).toFixed(1);
+        var bNeutralised = wBalInt + wBalSea;
+        var bNeutPct = (bNeutralised / wBal * 100).toFixed(1);
+        html += '<div style="height:16px;background:#f0ede8;border-radius:2px;overflow:hidden;display:flex;">';
+        html += '<div class="has-tip" data-tip="Intercepted: ' + bIntPct + '%" style="width:0%;background:#c0392b;transition:width 1s ease;flex-shrink:0;" data-target="' + bIntPct + '%"></div>';
+        if (wBalSea > 0) html += '<div class="has-tip" data-tip="Fell in sea: ' + bSeaPct + '%" style="width:0%;background:' + seaPattern('#c0392b') + ';transition:width 1s ease;flex-shrink:0;" data-target="' + bSeaPct + '%"></div>';
+        if (wBalLand > 0) html += '<div class="has-tip" data-tip="Impacted on territory: ' + bLandPct + '%" style="width:0%;background:#7b1a12;transition:width 1s ease;flex-shrink:0;" data-target="' + bLandPct + '%"></div>';
+        html += '</div>';
+        html += '<div style="font-size:13px;margin-top:6px;color:var(--navy);font-weight:800;">' + fmt(bNeutralised) + ' / ' + fmt(wBal) + ' neutralised &nbsp;<span style="color:#c0392b;">' + bNeutPct + '%</span></div>';
+        html += '<div style="font-size:10px;color:var(--sub);margin-top:3px;display:flex;gap:8px;align-items:center;">';
+        if (wBalSea > 0) html += '<span style="background:' + seaPattern('#c0392b') + ';padding:1px 6px;border-radius:1px;color:white;font-size:9px;font-weight:700;">' + wBalSea + ' sea</span>';
+        if (wBalLand > 0) html += '<span style="background:#7b1a12;padding:1px 6px;border-radius:1px;color:white;font-size:9px;font-weight:700;">' + wBalLand + ' territory</span>';
+        if (!wBalSea && !wBalLand) html += '<span style="color:var(--sub);">No impacts</span>';
+        html += '</div>';
+      } else {
+        html += '<div style="height:16px;background:#f0ede8;border-radius:2px;overflow:hidden;display:flex;"></div>';
+        html += '<div style="font-size:13px;margin-top:6px;color:var(--sub);font-weight:800;">None detected</div>';
+      }
+      html += '</div>';
+
+      // UAV interception
+      html += '<div><div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);text-transform:uppercase;margin-bottom:6px;">UAV / Drones</div>';
+      if (wUav > 0) {
+        var uIntPct = (wUavInt / wUav * 100).toFixed(1);
+        var uLandPct = (wUavLand / wUav * 100).toFixed(1);
+        var uNeutralised = wUavInt;
+        var uNeutPct = (uNeutralised / wUav * 100).toFixed(1);
+        html += '<div style="height:16px;background:#f0ede8;border-radius:2px;overflow:hidden;display:flex;">';
+        html += '<div class="has-tip" data-tip="Intercepted: ' + uIntPct + '%" style="width:0%;background:#2471a3;transition:width 1s ease;flex-shrink:0;" data-target="' + uIntPct + '%"></div>';
+        if (wUavLand > 0) html += '<div class="has-tip" data-tip="Impacted on territory: ' + uLandPct + '%" style="width:0%;background:#0f2d5c;transition:width 1s ease;flex-shrink:0;" data-target="' + uLandPct + '%"></div>';
+        html += '</div>';
+        html += '<div style="font-size:13px;margin-top:6px;color:var(--navy);font-weight:800;">' + fmt(uNeutralised) + ' / ' + fmt(wUav) + ' neutralised &nbsp;<span style="color:#2471a3;">' + uNeutPct + '%</span></div>';
+        html += '<div style="font-size:10px;color:var(--sub);margin-top:3px;display:flex;gap:8px;align-items:center;">';
+        if (wUavLand > 0) html += '<span style="background:#0f2d5c;padding:1px 6px;border-radius:1px;color:white;font-size:9px;font-weight:700;">' + wUavLand + ' territory</span>';
+        else html += '<span style="color:var(--sub);">No impacts</span>';
+        html += '</div>';
+      } else {
+        html += '<div style="height:16px;background:#f0ede8;border-radius:2px;overflow:hidden;display:flex;"></div>';
+        html += '<div style="font-size:13px;margin-top:6px;color:var(--sub);font-weight:800;">None detected</div>';
+      }
+      html += '</div>';
+
+      // Cruise interception
+      html += '<div><div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);text-transform:uppercase;margin-bottom:6px;">Cruise Missiles</div>';
+      if (wCru > 0) {
+        var cIntPct = (wCruInt / wCru * 100).toFixed(1);
+        html += '<div style="height:16px;background:#f0ede8;border-radius:2px;overflow:hidden;display:flex;">';
+        html += '<div class="has-tip" data-tip="Intercepted: ' + cIntPct + '%" style="width:0%;background:#e67e22;transition:width 1s ease;flex-shrink:0;" data-target="' + cIntPct + '%"></div>';
+        html += '</div>';
+        html += '<div style="font-size:13px;margin-top:6px;color:var(--navy);font-weight:800;">' + fmt(wCruInt) + ' / ' + fmt(wCru) + ' neutralised &nbsp;<span style="color:#e67e22;">' + cIntPct + '%</span></div>';
+        html += '<div style="font-size:10px;color:var(--sub);margin-top:3px;">No impacts</div>';
+      } else {
+        html += '<div style="height:16px;background:#f0ede8;border-radius:2px;overflow:hidden;display:flex;"></div>';
+        html += '<div style="font-size:13px;margin-top:6px;color:var(--sub);font-weight:800;">None detected</div>';
+      }
+      html += '</div>';
+      html += '</div>';
+
+      // Trend section
+      html += '<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">';
+
+      // Peak day
+      html += '<div>';
+      html += '<div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);text-transform:uppercase;margin-bottom:8px;">' + (numWeeks === 1 ? 'Peak Day' : 'Week Peak') + '</div>';
+      html += '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:22px;font-weight:800;color:var(--navy);">' + wPeakGlobalLabel + ' \u2014 ' + fmt(wPeak.grandTotal) + ' munitions</div>';
+      html += '<div style="font-size:11px;color:var(--sub);">' + wPeak.date + ' 2026' + (w === 0 && numWeeks === 1 ? ' \u00b7 Highest single-day volume' : '') + '</div>';
+      html += '</div>';
+
+      // Trend
+      html += '<div>';
+      if (w === 0 && numWeeks === 1) {
+        // Single week: show trend from peak to last day
+        var dropPct = ((lastDay.grandTotal - peakDay.grandTotal) / peakDay.grandTotal * 100).toFixed(0);
+        html += '<div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);text-transform:uppercase;margin-bottom:8px;">Overall Trend</div>';
+        html += '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:22px;font-weight:800;color:#1a7a4a;">\u25bc ' + dropPct + '% ' + peakDay.label.replace('Day ','D') + '\u2192' + lastDay.label.replace('Day ','D') + '</div>';
+        html += '<div style="font-size:11px;color:var(--sub);">' + fmt(peakDay.grandTotal) + ' peak (' + peakDay.label.replace('Day ','D') + ') \u2192 ' + fmt(lastDay.grandTotal) + ' ' + lastDay.label + '</div>';
+      } else if (w === 0) {
+        // First week of multi-week: overall trend within week
+        var wFirstDayTotal = wDays[0].grandTotal;
+        var wLastDayTotal = wDays[wDays.length - 1].grandTotal;
+        var wDropPct = ((wLastDayTotal - peakDay.grandTotal) / peakDay.grandTotal * 100).toFixed(0);
+        html += '<div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);text-transform:uppercase;margin-bottom:8px;">Overall Trend</div>';
+        html += '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:22px;font-weight:800;color:#1a7a4a;">\u25bc ' + wDropPct + '% ' + peakDay.label.replace('Day ','D') + '\u2192' + lastDay.label.replace('Day ','D') + '</div>';
+        html += '<div style="font-size:11px;color:var(--sub);">' + fmt(peakDay.grandTotal) + ' peak (' + peakDay.label.replace('Day ','D') + ') \u2192 ' + fmt(lastDay.grandTotal) + ' ' + lastDay.label + '</div>';
+      } else {
+        // Subsequent weeks: compare vs all-time peak
+        var vsAllTime = ((wPeak.grandTotal - overallPeakTotal) / overallPeakTotal * 100).toFixed(0);
+        html += '<div style="font-size:10px;font-weight:700;letter-spacing:1px;color:var(--sub);text-transform:uppercase;margin-bottom:8px;">vs. All-Time Peak (' + peakDay.label + ')</div>';
+        html += '<div style="font-family:\'Barlow Condensed\',sans-serif;font-size:22px;font-weight:800;color:#1a7a4a;">\u25bc ' + vsAllTime + '%</div>';
+        html += '<div style="font-size:11px;color:var(--sub);">' + fmt(wPeak.grandTotal) + ' vs ' + fmt(overallPeakTotal) + '</div>';
+      }
+      html += '</div></div>';
+
+      html += '</div>';  // close card
+
+      weekSumEl.insertAdjacentHTML('beforeend', html);
+    }
+  }
+
+  // ── Daily summary table ──────────────────────────────────────────
+  var tableBody = document.getElementById('daily-table-body');
+  var tableFoot = document.getElementById('daily-table-foot');
+  if (tableBody) {
+    days.forEach(function(day, i) {
+      var deltaHtml;
+      if (i === 0) {
+        deltaHtml = '<span style="color:var(--sub)">\u2014</span>';
+      } else {
+        var prev = days[i - 1].grandTotal;
+        var pctChg = ((day.grandTotal - prev) / prev * 100).toFixed(0);
+        var isDown = pctChg <= 0;
+        deltaHtml = '<span class="' + (isDown ? 'delta-down' : 'delta-up') + '">' + (isDown ? '\u25bc' : '\u25b2') + ' ' + (pctChg > 0 ? '+' : '') + pctChg + '%</span>';
+      }
+      var row = '<tr><td>' + day.label + ' \u2014 ' + day.date + '</td>';
+      row += '<td>' + day.ballistic.total + '</td>';
+      row += '<td>' + day.cruise.total + '</td>';
+      row += '<td>' + day.uav.total + '</td>';
+      row += '<td>' + day.grandTotal + '</td>';
+      row += '<td>' + deltaHtml + '</td></tr>';
+      tableBody.insertAdjacentHTML('beforeend', row);
+    });
+  }
+  if (tableFoot) {
+    var footRow = '<tr><td>TOTAL (D1\u2013D' + days.length + ')</td>';
+    footRow += '<td>' + fmt(agg.bal_total) + '</td>';
+    footRow += '<td>' + fmt(agg.cru_total) + '</td>';
+    footRow += '<td>' + fmt(agg.uav_total) + '</td>';
+    footRow += '<td>' + fmt(grandAllTotal) + '</td>';
+    footRow += '<td></td></tr>';
+    tableFoot.insertAdjacentHTML('beforeend', footRow);
+  }
+
+  // ── Week 1 interception rate bars (data-target driven) ───────────
+  document.querySelectorAll('[data-target]').forEach(function(el) {
+    setTimeout(function(e){ return function(){ e.style.width = e.dataset.target; }; }(el), 600);
+  });
+
+  // ── Summary horizontal bar ────────────────────────────────────────
+  var summaryBarEl = document.getElementById('summary-bar');
+  var summaryLabels = document.getElementById('summary-bar-labels');
+  if (summaryBarEl) {
+    var grandAll = grandAllTotal;
+    var segs = [
+      { val: agg.bal_int,  color: baseColors.ballistic,             tip: 'Ballistic intercepted: '   + agg.bal_int  },
+      { val: agg.bal_sea,  color: seaPattern(baseColors.ballistic), tip: 'Ballistic fell in sea: '   + agg.bal_sea  },
+      { val: agg.bal_land, color: darkColors.ballistic,             tip: 'Ballistic hit territory: ' + agg.bal_land },
+      { val: agg.cru_int,  color: baseColors.cruise,                tip: 'Cruise intercepted: '      + agg.cru_int  },
+      { val: agg.uav_int,  color: baseColors.uav,                   tip: 'UAV intercepted: '         + agg.uav_int  },
+      { val: agg.uav_sea,  color: seaPattern(baseColors.uav),       tip: 'UAV fell in sea: '         + agg.uav_sea  },
+      { val: agg.uav_land, color: darkColors.uav,                   tip: 'UAV hit territory: '       + agg.uav_land },
+    ];
+    segs.forEach(function(seg, si) {
+      if (!seg.val) return;
+      var pct = (seg.val / grandAll * 100).toFixed(2);
+      var el = document.createElement('div');
+      el.style.cssText = 'height:100%;width:0%;flex-shrink:0;background:' + seg.color + ';transition:width 1s ease;cursor:crosshair;';
+      el.className = 'has-tip';
+      el.dataset.tip = seg.tip + ' (' + pct + '%)';
+      summaryBarEl.appendChild(el);
+      setTimeout(function(e, p){ return function(){ e.style.width = p + '%'; }; }(el, pct), 400 + si * 60);
+    });
+    var lblDefs = [
+      { label: 'Ballistic territory',   val: agg.bal_land, color: darkColors.ballistic              },
+      { label: 'Ballistic intercepted', val: agg.bal_int,  color: baseColors.ballistic              },
+      { label: 'Ballistic sea',         val: agg.bal_sea,  color: seaPattern(baseColors.ballistic)  },
+      { label: 'Cruise intercepted',    val: agg.cru_int,  color: baseColors.cruise                 },
+      { label: 'UAV territory',         val: agg.uav_land, color: darkColors.uav                    },
+      { label: 'UAV intercepted',       val: agg.uav_int,  color: baseColors.uav                    },
+    ];
+    lblDefs.forEach(function(item) {
+      if (!item.val) return;
+      var pct = (item.val / grandAll * 100).toFixed(1);
+      var lbl = document.createElement('div');
+      lbl.style.cssText = 'display:flex;align-items:center;gap:5px;font-size:10px;color:var(--navy);';
+      var sw = document.createElement('div');
+      sw.style.cssText = 'width:10px;height:10px;border-radius:1px;flex-shrink:0;background:' + item.color + ';';
+      lbl.appendChild(sw);
+      var txt = document.createElement('span');
+      txt.innerHTML = '<strong>' + item.val + '</strong> ' + item.label + ' <span style="color:var(--sub);">(' + pct + '%)</span>';
+      lbl.appendChild(txt);
+      summaryLabels.appendChild(lbl);
+    });
+  }
+
+  // ── Week grid bar chart ───────────────────────────────────────────
+  var weeksEl = document.getElementById('chart-weeks');
+  if (weeksEl) {
+    // All bars share the same absolute scale: MAX_VOL = peak day total
+    // BAR_AREA_H = the fixed pixel height of the bar drawing area
+    // Reference lines sit inside this area. Ghost bars sit inside this area.
+    // Labels (numbers, deltas, day names) are outside this area.
+
+    for (var w = 0; w < numWeeks; w++) {
+      var weekDays = days.slice(w * WEEK_SIZE, (w + 1) * WEEK_SIZE);
+      var weekPeak = Math.max.apply(null, weekDays.map(function(d){ return d.grandTotal; }));
+
+      var weekWrap = document.createElement('div');
+      weekWrap.style.cssText = 'margin-bottom:32px;';
+
+      // Week label
+      if (numWeeks > 1) {
+        var wLabel = document.createElement('div');
+        wLabel.style.cssText = 'font-size:9px;font-weight:700;letter-spacing:2px;color:var(--sub);text-transform:uppercase;margin-bottom:8px;';
+        wLabel.textContent = 'Week ' + (w + 1);
+        weekWrap.appendChild(wLabel);
+      }
+
+      // ── Row 1: number + delta labels (fixed height above bar area) ──
+      var topLabels = document.createElement('div');
+      topLabels.style.cssText = 'display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-bottom:4px;';
+      weekDays.forEach(function(day, di) {
+        var globalDi = w * WEEK_SIZE + di;
+        var cell = document.createElement('div');
+        cell.style.cssText = 'text-align:center;';
+        var num = document.createElement('div');
+        num.style.cssText = 'font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:800;color:var(--navy);line-height:1;';
+        num.textContent = day.grandTotal;
+        cell.appendChild(num);
+        var dVal = volDeltas[globalDi];
+        if (dVal) {
+          var dEl = document.createElement('div');
+          dEl.style.cssText = 'font-size:9px;font-weight:700;color:' + (dVal.indexOf('-') !== -1 ? '#1a7a4a' : '#c0392b') + ';';
+          dEl.textContent = dVal;
+          cell.appendChild(dEl);
+        }
+        topLabels.appendChild(cell);
+      });
+      weekWrap.appendChild(topLabels);
+
+      // ── Row 2: bar area — fixed height BAR_MAX_H, relative positioned ──
+      var barArea = document.createElement('div');
+      barArea.style.cssText = 'position:relative;height:' + BAR_MAX_H + 'px;';
+
+      // Reference lines — position:absolute inside barArea
+      // bottom:0 = base of bars, bottom:BAR_MAX_H = all-time peak top
+      // week peak line (always)
+      var weekPeakH = Math.round(weekPeak / MAX_VOL * BAR_MAX_H);
+      var wPLine = document.createElement('div');
+      wPLine.style.cssText = 'position:absolute;left:0;right:0;bottom:' + weekPeakH + 'px;border-top:1px dashed #bbb;pointer-events:none;z-index:2;';
+      var wPLbl = document.createElement('div');
+      wPLbl.style.cssText = 'position:absolute;right:0;top:2px;font-size:8px;font-weight:700;color:#aaa;letter-spacing:1px;white-space:nowrap;';
+      wPLbl.textContent = 'WEEK PEAK: ' + weekPeak;
+      wPLine.appendChild(wPLbl);
+      barArea.appendChild(wPLine);
+
+      // All-time peak line (only week 2+, week 1 IS the peak)
+      if (w > 0) {
+        var atPLine = document.createElement('div');
+        atPLine.style.cssText = 'position:absolute;left:0;right:0;bottom:' + BAR_MAX_H + 'px;border-top:1px solid var(--navy);opacity:0.3;pointer-events:none;z-index:2;';
+        var atPLbl = document.createElement('div');
+        atPLbl.style.cssText = 'position:absolute;right:0;top:2px;font-size:8px;font-weight:700;color:var(--navy);opacity:0.6;letter-spacing:1px;white-space:nowrap;';
+        atPLbl.textContent = 'ALL-TIME PEAK \u2014 ' + peakDay.label + ': ' + peakDay.grandTotal;
+        atPLine.appendChild(atPLbl);
+        barArea.appendChild(atPLine);
+      }
+
+      // Bar columns grid — sits inside barArea, aligned to bottom
+      var barsGrid = document.createElement('div');
+      barsGrid.style.cssText = 'display:grid;grid-template-columns:repeat(7,1fr);gap:6px;height:100%;align-items:end;position:relative;z-index:1;';
+
+      weekDays.forEach(function(day, di) {
+        var globalDi = w * WEEK_SIZE + di;
+        // Column: ghost + bar stacked from bottom
+        var col = document.createElement('div');
+        col.style.cssText = 'position:relative;height:100%;';
+
+        // Ghost bar (prev week same slot)
+        if (w > 0) {
+          var prevDay = days[(w - 1) * WEEK_SIZE + di];
+          if (prevDay) {
+            var ghostH = Math.round(prevDay.grandTotal / MAX_VOL * BAR_MAX_H);
+            var ghost = document.createElement('div');
+            ghost.style.cssText = 'position:absolute;bottom:0;left:0;right:0;height:' + ghostH + 'px;background:#888;opacity:0.13;border-radius:2px 2px 0 0;pointer-events:none;';
+            col.appendChild(ghost);
+          }
+        }
+
+        // Stacked bar
+        var barH = Math.round(day.grandTotal / MAX_VOL * BAR_MAX_H);
+        var bar = document.createElement('div');
+        bar.style.cssText = 'position:absolute;bottom:0;left:0;right:0;height:0px;display:flex;flex-direction:column-reverse;overflow:hidden;border-radius:2px 2px 0 0;z-index:1;';
+        bar.className = 'has-tip';
+        var tipParts = [day.label + ': ' + day.grandTotal + ' total'];
+        if (day.ballistic.total) tipParts.push('Ballistic: ' + day.ballistic.intercepted + ' int' + (day.ballistic.sea ? ' / ' + day.ballistic.sea + ' sea' : '') + (day.ballistic.land ? ' / ' + day.ballistic.land + ' land' : ''));
+        if (day.cruise.total)    tipParts.push('Cruise: ' + day.cruise.intercepted + ' int');
+        if (day.uav.total)       tipParts.push('UAV: ' + day.uav.intercepted + ' int' + (day.uav.sea ? ' / ' + day.uav.sea + ' sea' : '') + (day.uav.land ? ' / ' + day.uav.land + ' land' : ''));
+        bar.dataset.tip = tipParts.join(' | ');
+        setTimeout(function(el,h){ return function(){ el.style.transition='height 0.8s ease'; el.style.height=h+'px'; }; }(bar, barH), 200 + globalDi * 70);
+
+        // column-reverse: last appended = visually at BOTTOM
+        // Desired visual order bottom→top: bal_int | bal_sea | bal_impact | cru_int | uav_int | uav_impact
+        // So append order (reversed): bal_impact, bal_sea, bal_int, cru_impact(none), cru_int, uav_impact, uav_int
+        var orderedSegs = [
+          { key: 'ballistic', type: 'land',        val: day.ballistic.land,        color: darkColors.ballistic,        h: Math.max(2, Math.round(day.ballistic.land / MAX_VOL * BAR_MAX_H)) },
+          { key: 'ballistic', type: 'sea',         val: day.ballistic.sea,         color: seaPattern(baseColors.ballistic), h: Math.max(2, Math.round(day.ballistic.sea / MAX_VOL * BAR_MAX_H)) },
+          { key: 'ballistic', type: 'intercepted', val: day.ballistic.intercepted, color: baseColors.ballistic,        h: Math.round(day.ballistic.intercepted / MAX_VOL * BAR_MAX_H) },
+          { key: 'cruise',    type: 'intercepted', val: day.cruise.intercepted,    color: baseColors.cruise,           h: Math.round(day.cruise.intercepted / MAX_VOL * BAR_MAX_H) },
+          { key: 'uav',       type: 'land',        val: day.uav.land,              color: darkColors.uav,              h: Math.max(2, Math.round(day.uav.land / MAX_VOL * BAR_MAX_H)) },
+          { key: 'uav',       type: 'intercepted', val: day.uav.intercepted,       color: baseColors.uav,              h: Math.round(day.uav.intercepted / MAX_VOL * BAR_MAX_H) },
+        ];
+        orderedSegs.forEach(function(seg) {
+          if (!seg.val) return;
+          var s = document.createElement('div');
+          s.style.cssText = 'width:100%;height:' + seg.h + 'px;background:' + seg.color + ';flex-shrink:0;cursor:crosshair;';
+          s.className = 'has-tip';
+          s.dataset.tip = seg.key + ' ' + seg.type + ': ' + seg.val;
+          bar.appendChild(s);
+        });
+        col.appendChild(bar);
+        barsGrid.appendChild(col);
+      });
+
+      barArea.appendChild(barsGrid);
+      weekWrap.appendChild(barArea);
+
+      // ── Row 3: day labels below bar area ──
+      var botLabels = document.createElement('div');
+      botLabels.style.cssText = 'display:grid;grid-template-columns:repeat(7,1fr);gap:6px;margin-top:4px;border-top:2px solid var(--border);padding-top:4px;';
+      weekDays.forEach(function(day) {
+        var cell = document.createElement('div');
+        cell.style.cssText = 'text-align:center;';
+        cell.innerHTML = '<div style="font-size:10px;font-weight:700;color:var(--navy);">' + day.label + '</div><div style="font-size:9px;color:var(--sub);">' + day.date + '</div>';
+        botLabels.appendChild(cell);
+      });
+      weekWrap.appendChild(botLabels);
+
+      weeksEl.appendChild(weekWrap);
+    }
+  }
+
+
+    // Global floating tooltip
   const tip = document.createElement('div');
   tip.style.cssText = `position:fixed;background:var(--navy);color:white;font-family:'Barlow',sans-serif;font-size:12px;font-weight:700;padding:5px 10px;border-radius:3px;pointer-events:none;z-index:9999;opacity:0;transition:opacity 0.1s;white-space:nowrap;border-left:3px solid var(--gold);`;
   document.body.appendChild(tip);
