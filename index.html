@@ -662,14 +662,15 @@
   <div class="bottom-grid">
 
     <!-- DAILY TOTALS TABLE -->
-    <div class="info-card">
-      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid var(--gold);">
+    <div class="info-card" style="display:flex;flex-direction:column;max-height:500px;">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:14px; padding-bottom:8px; border-bottom:2px solid var(--gold);flex-shrink:0;">
         <div class="info-card-title" style="margin-bottom:0; padding-bottom:0; border-bottom:none;">Daily Summary</div>
         <div style="font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; color:var(--navy); direction:rtl;">الملخص اليومي</div>
       </div>
+      <div style="overflow-y:auto;flex:1;min-height:0;">
       <table class="day-summary">
-        <thead>
-          <tr>
+        <thead style="position:sticky;top:0;z-index:1;">
+          <tr style="background:var(--card);">
             <th>Day</th>
             <th>Ballistic</th>
             <th>Cruise</th>
@@ -681,6 +682,7 @@
         <tbody id="daily-table-body"></tbody>
         <tfoot id="daily-table-foot"></tfoot>
       </table>
+      </div>
     </div>
 
     <!-- CASUALTIES -->
@@ -691,17 +693,17 @@
       </div>
       <div class="casualty-row">
         <div class="cas-item">
-          <div class="cas-num dead">4</div>
+          <div class="cas-num dead">6</div>
           <div class="cas-lbl">Fatalities</div>
         </div>
         <div class="cas-item">
-          <div class="cas-num injured">117</div>
+          <div class="cas-num injured">131</div>
           <div class="cas-lbl">Light Injuries</div>
         </div>
       </div>
       <div style="margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 12px; color: var(--sub); line-height: 1.8;">
-        › <strong>3 fatalities</strong>: Pakistani, Nepalese and Bangladeshi nationals.<br>
-        › <strong>112 injuries</strong>: Emirati, Egyptian, Sudanese, Ethiopian, Filipino, Pakistani, Iranian, Indian, Bangladeshi, Sri Lankan, Azerbaijani, Yemeni, Ugandan, Eritrean, Lebanese, Afghan, Bahraini, Comorian and Turkish nationals.<br>
+        › <strong>6 fatalities</strong>: Emirati, Pakistani, Nepali and Bangladeshi nationals.<br>
+        › <strong>131 injuries</strong>: Emirati, Egyptian, Sudanese, Ethiopian, Filipino, Pakistani, Iranian, Indian, Bangladeshi, Sri Lankan, Azerbaijani, Yemeni, Ugandan, Eritrean, Lebanese, Afghan, Bahraini, Comorian, Turkish, Iraqi, Nepal, Nigerian, Omani, Jordanian, Palestinian, Ghanaian and Indonesian nationals.<br>
         › Audible sounds across the country result from interception operations by air defense systems and fighter jets — <strong>not direct impacts</strong>.<br>
         › Minor to moderate material damage reported on some civilian properties.<br>
         › The UAE reserves its full right to respond to this escalation in accordance with international law.<br>
@@ -714,6 +716,29 @@
 </div>
 
 </div><!-- /content -->
+
+<!-- FLIGHT MONITORING -->
+<div style="max-width:1100px; margin:0 auto; padding: 0 40px 16px;">
+  <div class="section-label" style="margin-top:16px;">Air Traffic Impact — FlightRadar24 Data <div class="line"></div> <span class="ar" style="color:var(--gold);">تأثير حركة الطيران</span></div>
+  <div class="chart-section" style="padding:20px 24px;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+      <div class="chart-title">Daily Flights by Airline</div>
+      <div style="font-size:10px;color:var(--sub);letter-spacing:1px;">SOURCE: FLIGHTRADAR24</div>
+    </div>
+    <div class="chart-note" id="flights-note"></div>
+    <div id="flights-chart" style="margin-top:16px;"></div>
+    <div id="flights-legend" style="display:flex;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);flex-wrap:wrap;"></div>
+  </div>
+  <div class="chart-section" style="padding:20px 24px;margin-top:14px;">
+    <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:6px;">
+      <div class="chart-title">UAE Airports Only (DXB + AUH + SHJ)</div>
+      <div style="font-size:10px;color:var(--sub);letter-spacing:1px;">EXCL. QATAR</div>
+    </div>
+    <div class="chart-note" id="uae-flights-note"></div>
+    <div id="uae-flights-chart" style="margin-top:16px;"></div>
+    <div id="uae-flights-legend" style="display:flex;gap:16px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border);flex-wrap:wrap;"></div>
+  </div>
+</div>
 
 <!-- SOURCES -->
 <div style="max-width:1100px; margin:0 auto; padding: 0 40px 30px;">
@@ -782,6 +807,16 @@
           <td>09 Mar 2026</td>
           <td><a class="src-link" href="https://www.instagram.com/p/DVqaUSRiAOt/?hl=en" target="_blank">@modgovae — Post Day 10</a></td>
         </tr>
+        <tr>
+          <td><strong>Day 11</strong></td>
+          <td>10 Mar 2026</td>
+          <td><a class="src-link" href="https://www.instagram.com/p/DVtISYRCBZI/?hl=en" target="_blank">@modgovae — Post Day 11</a></td>
+        </tr>
+        <tr>
+          <td><strong>Day 12</strong></td>
+          <td>11 Mar 2026</td>
+          <td><a class="src-link" href="https://x.com/modgovae/status/2031837588127138255#m" target="_blank">@modgovae — Post Day 12</a></td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -841,6 +876,16 @@
       cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
       uav:       { total: 18,  intercepted: 17,  sea: 0,  land: 1  },
       grandTotal: 33 },
+    { label: 'Day 11', date: '10 Mar',
+      ballistic: { total: 9,   intercepted: 8,   sea: 1,  land: 0  },
+      cruise:    { total: 0,   intercepted: 0,   sea: 0,  land: 0  },
+      uav:       { total: 35,  intercepted: 26,  sea: 0,  land: 9  },
+      grandTotal: 44 },
+    { label: 'Day 12', date: '11 Mar',
+      ballistic: { total: 6,   intercepted: 6,   sea: 0,  land: 0  },
+      cruise:    { total: 7,   intercepted: 7,   sea: 0,  land: 0  },
+      uav:       { total: 39,  intercepted: 39,  sea: 0,  land: 0  },
+      grandTotal: 52 },
   ];
 
   const grandAllTotal = days.reduce((s,d) => s + d.grandTotal, 0);
@@ -1033,7 +1078,7 @@
         html += '</div>';
         html += '<div style="font-size:13px;margin-top:6px;color:var(--navy);font-weight:800;">' + fmt(bNeutralised) + ' / ' + fmt(wBal) + ' neutralised &nbsp;<span style="color:#c0392b;">' + bNeutPct + '%</span></div>';
         html += '<div style="font-size:10px;color:var(--sub);margin-top:3px;display:flex;gap:8px;align-items:center;">';
-        if (wBalSea > 0) html += '<span style="background:' + seaPattern('#c0392b') + ';padding:1px 6px;border-radius:1px;color:white;font-size:9px;font-weight:700;">' + wBalSea + ' sea</span>';
+        if (wBalSea > 0) html += '<span style="border:1px solid var(--border);padding:1px 6px;border-radius:1px;color:var(--navy);font-size:9px;font-weight:700;">' + wBalSea + ' sea</span>';
         if (wBalLand > 0) html += '<span style="background:#7b1a12;padding:1px 6px;border-radius:1px;color:white;font-size:9px;font-weight:700;">' + wBalLand + ' territory</span>';
         if (!wBalSea && !wBalLand) html += '<span style="color:var(--sub);">No impacts</span>';
         html += '</div>';
@@ -1126,23 +1171,99 @@
   var tableBody = document.getElementById('daily-table-body');
   var tableFoot = document.getElementById('daily-table-foot');
   if (tableBody) {
-    days.forEach(function(day, i) {
-      var deltaHtml;
-      if (i === 0) {
-        deltaHtml = '<span style="color:var(--sub)">\u2014</span>';
+    // Build week groups
+    for (var wk = 0; wk < numWeeks; wk++) {
+      var wDays = days.slice(wk * WEEK_SIZE, (wk + 1) * WEEK_SIZE);
+      var isFull = wDays.length === WEEK_SIZE;
+      var gStart = wk * WEEK_SIZE;
+
+      if (isFull) {
+        // Compute week totals
+        var wBal = 0, wCru = 0, wUav = 0, wGrand = 0;
+        wDays.forEach(function(d) { wBal += d.ballistic.total; wCru += d.cruise.total; wUav += d.uav.total; wGrand += d.grandTotal; });
+        var wFirstLabel = wDays[0].date;
+        var wLastLabel = wDays[wDays.length - 1].date;
+        var weekId = 'week-expand-' + wk;
+
+        // Summary row (clickable)
+        var summaryRow = '<tr class="week-summary-row" data-expand="' + weekId + '" style="cursor:pointer;background:var(--navy);color:white;">';
+        summaryRow += '<td style="color:var(--gold-light);font-family:\'Barlow Condensed\',sans-serif;font-size:14px;font-weight:700;letter-spacing:1px;white-space:nowrap;">▶ Week ' + (wk + 1) + ' <span style="font-size:10px;font-weight:400;color:rgba(255,255,255,0.5);">' + wFirstLabel + ' – ' + wLastLabel + '</span></td>';
+        summaryRow += '<td style="color:white;font-weight:700;">' + wBal + '</td>';
+        summaryRow += '<td style="color:white;font-weight:700;">' + wCru + '</td>';
+        summaryRow += '<td style="color:white;font-weight:700;">' + wUav + '</td>';
+        summaryRow += '<td style="color:white;font-weight:700;">' + fmt(wGrand) + '</td>';
+        summaryRow += '<td style="color:rgba(255,255,255,0.5);font-size:10px;">click to expand</td>';
+        summaryRow += '</tr>';
+        tableBody.insertAdjacentHTML('beforeend', summaryRow);
+
+        // Detail rows (hidden by default)
+        wDays.forEach(function(day, di) {
+          var gi = gStart + di;
+          var deltaHtml;
+          if (gi === 0) {
+            deltaHtml = '<span style="color:var(--sub)">\u2014</span>';
+          } else {
+            var prev = days[gi - 1].grandTotal;
+            var pctChg = ((day.grandTotal - prev) / prev * 100).toFixed(0);
+            var isDown = pctChg <= 0;
+            deltaHtml = '<span class="' + (isDown ? 'delta-down' : 'delta-up') + '">' + (isDown ? '\u25bc' : '\u25b2') + ' ' + (pctChg > 0 ? '+' : '') + pctChg + '%</span>';
+          }
+          var row = '<tr class="' + weekId + '" style="display:none;">';
+          row += '<td style="padding-left:24px;">' + day.label + ' \u2014 ' + day.date + '</td>';
+          row += '<td>' + day.ballistic.total + '</td>';
+          row += '<td>' + day.cruise.total + '</td>';
+          row += '<td>' + day.uav.total + '</td>';
+          row += '<td>' + day.grandTotal + '</td>';
+          row += '<td>' + deltaHtml + '</td></tr>';
+          tableBody.insertAdjacentHTML('beforeend', row);
+        });
       } else {
-        var prev = days[i - 1].grandTotal;
-        var pctChg = ((day.grandTotal - prev) / prev * 100).toFixed(0);
-        var isDown = pctChg <= 0;
-        deltaHtml = '<span class="' + (isDown ? 'delta-down' : 'delta-up') + '">' + (isDown ? '\u25bc' : '\u25b2') + ' ' + (pctChg > 0 ? '+' : '') + pctChg + '%</span>';
+        // Partial week — show days directly (current week)
+        if (numWeeks > 1) {
+          var pBal = 0, pCru = 0, pUav = 0, pGrand = 0;
+          wDays.forEach(function(d) { pBal += d.ballistic.total; pCru += d.cruise.total; pUav += d.uav.total; pGrand += d.grandTotal; });
+          var partialHeader = '<tr style="background:rgba(26,45,74,0.06);">';
+          partialHeader += '<td style="font-size:10px;font-weight:700;letter-spacing:2px;color:var(--sub);text-transform:uppercase;text-align:left;">Week ' + (wk + 1) + ' <span style="font-weight:400;font-size:9px;">(in progress)</span></td>';
+          partialHeader += '<td style="font-weight:700;color:var(--sub);">' + pBal + '</td>';
+          partialHeader += '<td style="font-weight:700;color:var(--sub);">' + pCru + '</td>';
+          partialHeader += '<td style="font-weight:700;color:var(--sub);">' + pUav + '</td>';
+          partialHeader += '<td style="font-weight:700;color:var(--sub);">' + fmt(pGrand) + '</td>';
+          partialHeader += '<td></td></tr>';
+          tableBody.insertAdjacentHTML('beforeend', partialHeader);
+        }
+        wDays.forEach(function(day, di) {
+          var gi = gStart + di;
+          var deltaHtml;
+          if (gi === 0) {
+            deltaHtml = '<span style="color:var(--sub)">\u2014</span>';
+          } else {
+            var prev = days[gi - 1].grandTotal;
+            var pctChg = ((day.grandTotal - prev) / prev * 100).toFixed(0);
+            var isDown = pctChg <= 0;
+            deltaHtml = '<span class="' + (isDown ? 'delta-down' : 'delta-up') + '">' + (isDown ? '\u25bc' : '\u25b2') + ' ' + (pctChg > 0 ? '+' : '') + pctChg + '%</span>';
+          }
+          var row = '<tr><td>' + day.label + ' \u2014 ' + day.date + '</td>';
+          row += '<td>' + day.ballistic.total + '</td>';
+          row += '<td>' + day.cruise.total + '</td>';
+          row += '<td>' + day.uav.total + '</td>';
+          row += '<td>' + day.grandTotal + '</td>';
+          row += '<td>' + deltaHtml + '</td></tr>';
+          tableBody.insertAdjacentHTML('beforeend', row);
+        });
       }
-      var row = '<tr><td>' + day.label + ' \u2014 ' + day.date + '</td>';
-      row += '<td>' + day.ballistic.total + '</td>';
-      row += '<td>' + day.cruise.total + '</td>';
-      row += '<td>' + day.uav.total + '</td>';
-      row += '<td>' + day.grandTotal + '</td>';
-      row += '<td>' + deltaHtml + '</td></tr>';
-      tableBody.insertAdjacentHTML('beforeend', row);
+    }
+
+    // Toggle expand/collapse on click
+    tableBody.addEventListener('click', function(e) {
+      var row = e.target.closest('.week-summary-row');
+      if (!row) return;
+      var expandClass = row.dataset.expand;
+      var detailRows = tableBody.querySelectorAll('.' + expandClass);
+      var isExpanded = detailRows[0] && detailRows[0].style.display !== 'none';
+      detailRows.forEach(function(r) { r.style.display = isExpanded ? 'none' : ''; });
+      // Toggle arrow
+      var td = row.querySelector('td');
+      td.innerHTML = td.innerHTML.replace(isExpanded ? '▼' : '▶', isExpanded ? '▶' : '▼');
     });
   }
   if (tableFoot) {
@@ -1350,6 +1471,338 @@
       weekWrap.appendChild(botLabels);
 
       weeksEl.appendChild(weekWrap);
+    }
+  }
+
+  // ── Flight monitoring chart ──────────────────────────────────────
+  var flightData = [
+    { date: '23 Feb', airArabia: 277, emirates: 517, etihad: 319, flydubai: 346, qatar: 568, preAttack: true },
+    { date: '24 Feb', airArabia: 296, emirates: 527, etihad: 325, flydubai: 354, qatar: 563, preAttack: true },
+    { date: '25 Feb', airArabia: 294, emirates: 521, etihad: 319, flydubai: 345, qatar: 579, preAttack: true },
+    { date: '26 Feb', airArabia: 303, emirates: 534, etihad: 333, flydubai: 351, qatar: 593, preAttack: true },
+    { date: '27 Feb', airArabia: 305, emirates: 531, etihad: 334, flydubai: 343, qatar: 583, preAttack: true },
+    { date: '28 Feb', airArabia: 103, emirates: 224, etihad: 90,  flydubai: 108, qatar: 216 },
+    { date: '01 Mar', airArabia: 0,   emirates: 24,  etihad: 4,   flydubai: 1,   qatar: 3   },
+    { date: '02 Mar', airArabia: 0,   emirates: 29,  etihad: 37,  flydubai: 20,  qatar: 2   },
+    { date: '03 Mar', airArabia: 30,  emirates: 70,  etihad: 28,  flydubai: 75,  qatar: 5   },
+    { date: '04 Mar', airArabia: 41,  emirates: 136, etihad: 22,  flydubai: 89,  qatar: 9   },
+    { date: '05 Mar', airArabia: 76,  emirates: 214, etihad: 31,  flydubai: 173, qatar: 15  },
+    { date: '06 Mar', airArabia: 98,  emirates: 261, etihad: 31,  flydubai: 174, qatar: 18  },
+    { date: '07 Mar', airArabia: 109, emirates: 252, etihad: 43,  flydubai: 137, qatar: 34  },
+    { date: '08 Mar', airArabia: 127, emirates: 284, etihad: 33,  flydubai: 196, qatar: 21  },
+    { date: '09 Mar', airArabia: 157, emirates: 326, etihad: 61,  flydubai: 145, qatar: 42  },
+  ];
+
+  var airlines = [
+    { key: 'airArabia', label: 'Air Arabia',     color: '#E90840' },
+    { key: 'emirates',  label: 'Emirates',        color: '#D71920' },
+    { key: 'etihad',    label: 'Etihad Airways',  color: '#C89903' },
+    { key: 'flydubai',  label: 'flydubai',        color: '#006497' },
+    { key: 'qatar',     label: 'Qatar Airways',   color: '#5C012E' },
+  ];
+
+  // Airport groupings deduced from airline hubs
+  var airportGroups = [
+    { key: 'dxb', label: 'DXB', fullLabel: 'Dubai (DXB)', color: '#D71920', airlines: ['emirates','flydubai'],
+      subColors: { emirates: '#D71920', flydubai: '#006497' } },
+    { key: 'auh', label: 'AUH', fullLabel: 'Abu Dhabi (AUH)', color: '#C89903', airlines: ['etihad'],
+      subColors: { etihad: '#C89903' } },
+    { key: 'shj', label: 'SHJ', fullLabel: 'Air Arabia (SHJ/AUH)', color: '#E90840', airlines: ['airArabia'],
+      subColors: { airArabia: '#E90840' } },
+    { key: 'doh', label: 'DOH', fullLabel: 'Qatar Airways (DOH)', color: '#5C012E', airlines: ['qatar'],
+      subColors: { qatar: '#5C012E' } },
+  ];
+
+  var flightsChartEl = document.getElementById('flights-chart');
+  var flightsNoteEl = document.getElementById('flights-note');
+  var flightsLegendEl = document.getElementById('flights-legend');
+
+  if (flightsChartEl) {
+    // Compute airport totals per day
+    flightData.forEach(function(fd) {
+      airportGroups.forEach(function(g) {
+        fd['_' + g.key] = g.airlines.reduce(function(s, k){ return s + (fd[k] || 0); }, 0);
+      });
+      fd._uaeTotal = fd._dxb + fd._auh + fd._shj;
+    });
+
+    // Calculate baselines (average of pre-attack days)
+    var preDays = flightData.filter(function(d){ return d.preAttack; });
+    var apBaselines = {};
+    airportGroups.forEach(function(g) {
+      apBaselines[g.key] = Math.round(preDays.reduce(function(s,d){ return s + d['_' + g.key]; }, 0) / preDays.length);
+    });
+    var uaeBaseline = apBaselines.dxb + apBaselines.auh + apBaselines.shj;
+    var totalBaseline = uaeBaseline + apBaselines.doh;
+
+    // Find max daily total for bar scaling
+    var flightMax = 0;
+    flightData.forEach(function(d) {
+      var total = airportGroups.reduce(function(s,g){ return s + d['_' + g.key]; }, 0);
+      if (total > flightMax) flightMax = total;
+    });
+
+    // Latest day stats for note
+    var latestFlight = flightData[flightData.length - 1];
+    var latestUAE = latestFlight._uaeTotal;
+    var latestAll = airportGroups.reduce(function(s,g){ return s + latestFlight['_' + g.key]; }, 0);
+    var uaeRecoveryPct = (latestUAE / uaeBaseline * 100).toFixed(0);
+    var lowestDay = flightData.reduce(function(min, d) {
+      if (d.preAttack) return min;
+      return d._uaeTotal < min.total ? { date: d.date, total: d._uaeTotal } : min;
+    }, { date: '', total: Infinity });
+
+    if (flightsNoteEl) {
+      var totalRecoveryPct = (latestAll / totalBaseline * 100).toFixed(0);
+      var lowestAllDay = flightData.reduce(function(min, d) {
+        if (d.preAttack) return min;
+        var t = airportGroups.reduce(function(s,g){ return s + d['_' + g.key]; }, 0);
+        return t < min.total ? { date: d.date, total: t } : min;
+      }, { date: '', total: Infinity });
+      flightsNoteEl.innerHTML = 'All-airports baseline: <strong>' + fmt(totalBaseline) + ' flights/day</strong> (5-day pre-attack avg). Lowest: <strong>' + fmt(lowestAllDay.total) + '</strong> on ' + lowestAllDay.date + '. Latest (' + latestFlight.date + '): <strong>' + fmt(latestAll) + '</strong> (' + totalRecoveryPct + '% of baseline). DXB = Emirates + flydubai · AUH = Etihad · SHJ = Air Arabia · DOH = Qatar Airways.';
+    }
+
+    // Chart: stacked horizontal bars grouped by airport
+    var FLIGHT_BAR_H = 28;
+    flightData.forEach(function(fd, fi) {
+      var dayTotal = airportGroups.reduce(function(s,g){ return s + fd['_' + g.key]; }, 0);
+      var dayPctOfBaseline = (dayTotal / totalBaseline * 100).toFixed(0);
+      var isAttackStart = fd.date === '28 Feb';
+
+      // Attack start divider
+      if (isAttackStart) {
+        var divider = document.createElement('div');
+        divider.style.cssText = 'display:flex;align-items:center;gap:8px;margin:8px 0 4px;';
+        divider.innerHTML = '<div style="flex:1;height:1px;background:var(--red);"></div><span style="font-size:9px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;white-space:nowrap;">\u26a0 ATTACKS BEGIN</span><div style="flex:1;height:1px;background:var(--red);"></div>';
+        flightsChartEl.appendChild(divider);
+      }
+
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:3px;height:' + FLIGHT_BAR_H + 'px;';
+
+      // Date label
+      var dateLabel = document.createElement('div');
+      dateLabel.style.cssText = 'width:50px;font-size:10px;font-weight:700;color:' + (fd.preAttack ? 'var(--sub)' : 'var(--navy)') + ';text-align:right;flex-shrink:0;white-space:nowrap;';
+      dateLabel.textContent = fd.date;
+      row.appendChild(dateLabel);
+
+      // Bar track
+      var track = document.createElement('div');
+      track.style.cssText = 'flex:1;height:' + (FLIGHT_BAR_H - 4) + 'px;background:#f0ede8;border-radius:2px;overflow:hidden;display:flex;border:1px solid ' + (fd.preAttack ? 'transparent' : 'var(--border)') + ';' + (fd.preAttack ? 'opacity:0.5;' : '');
+
+      airportGroups.forEach(function(group, gi) {
+        var groupTotal = fd['_' + group.key];
+        if (!groupTotal) return;
+
+        // Render sub-airlines within the group
+        group.airlines.forEach(function(airlineKey) {
+          var val = fd[airlineKey] || 0;
+          if (!val) return;
+          var segPct = (val / flightMax * 100).toFixed(2);
+          var airlineLabel = airlines.find(function(a){ return a.key === airlineKey; }).label;
+          var seg = document.createElement('div');
+          seg.style.cssText = 'height:100%;width:0%;background:' + group.subColors[airlineKey] + ';flex-shrink:0;transition:width 0.8s ease;cursor:crosshair;display:flex;align-items:center;justify-content:center;overflow:hidden;';
+          seg.className = 'has-tip';
+          seg.dataset.tip = group.fullLabel + ' \u2014 ' + airlineLabel + ': ' + val;
+          seg.dataset.target = segPct + '%';
+          var showNum = parseFloat(segPct) > 4 || airlineKey === 'etihad';
+          if (showNum) {
+            var numSpan = document.createElement('span');
+            var isTight = parseFloat(segPct) <= 4;
+            numSpan.style.cssText = 'font-size:' + (isTight ? '7' : '8') + 'px;font-weight:700;color:white;white-space:nowrap;opacity:0.9;pointer-events:none;';
+            numSpan.textContent = val;
+            seg.appendChild(numSpan);
+          }
+          track.appendChild(seg);
+        });
+
+        // Thin separator between airport groups (except last)
+        if (gi < airportGroups.length - 1 && groupTotal > 0) {
+          var sep = document.createElement('div');
+          sep.style.cssText = 'width:1px;height:100%;background:rgba(255,255,255,0.6);flex-shrink:0;';
+          track.appendChild(sep);
+        }
+      });
+      row.appendChild(track);
+
+      // Total + day-over-day % change
+      var totalLabel = document.createElement('div');
+      totalLabel.style.cssText = 'width:100px;font-size:11px;font-weight:700;color:var(--navy);flex-shrink:0;text-align:right;white-space:nowrap;';
+      var deltaHtml = '';
+      if (fi > 0) {
+        var prevTotal = airportGroups.reduce(function(s,g){ return s + flightData[fi-1]['_' + g.key]; }, 0);
+        var pctChg = ((dayTotal - prevTotal) / prevTotal * 100).toFixed(0);
+        var isUp = pctChg > 0;
+        var pctColor = isUp ? '#1a7a4a' : pctChg < 0 ? '#c0392b' : 'var(--sub)';
+        var pctArrow = isUp ? '\u25b2' : pctChg < 0 ? '\u25bc' : '';
+        deltaHtml = ' <span style="font-size:9px;font-weight:700;color:' + pctColor + ';">' + pctArrow + (isUp ? '+' : '') + pctChg + '%</span>';
+      }
+      totalLabel.innerHTML = '<strong>' + fmt(dayTotal) + '</strong>' + deltaHtml;
+      row.appendChild(totalLabel);
+
+      flightsChartEl.appendChild(row);
+    });
+
+    // Reference label
+    var baselineRef = document.createElement('div');
+    baselineRef.style.cssText = 'text-align:right;font-size:9px;color:var(--sub);margin-top:4px;letter-spacing:1px;';
+    baselineRef.textContent = '\u0394% = day-over-day change \u00b7 All airports incl. Qatar';
+    flightsChartEl.appendChild(baselineRef);
+
+    // Animate flight bars
+    setTimeout(function() {
+      flightsChartEl.querySelectorAll('[data-target]').forEach(function(el) {
+        el.style.width = el.dataset.target;
+      });
+    }, 800);
+
+    // Legend — airport grouped
+    if (flightsLegendEl) {
+      airportGroups.forEach(function(group) {
+        group.airlines.forEach(function(airlineKey) {
+          var airlineInfo = airlines.find(function(a){ return a.key === airlineKey; });
+          var leg = document.createElement('div');
+          leg.style.cssText = 'display:flex;align-items:center;gap:5px;font-size:11px;color:var(--sub);font-weight:500;';
+          var swatch = document.createElement('div');
+          swatch.style.cssText = 'width:14px;height:14px;border-radius:2px;flex-shrink:0;background:' + group.subColors[airlineKey] + ';';
+          leg.appendChild(swatch);
+          var lbl = document.createElement('span');
+          lbl.innerHTML = '<strong>' + group.label + '</strong> ' + airlineInfo.label;
+          if (group.key === 'doh') lbl.innerHTML += ' <span style="font-size:9px;color:var(--sub);">(ref)</span>';
+          leg.appendChild(lbl);
+          flightsLegendEl.appendChild(leg);
+        });
+      });
+    }
+  }
+
+  // ═══════════════════════════════════════════════════════
+  // UAE-ONLY FLIGHT CHART (DXB + AUH + SHJ, no Qatar)
+  // ═══════════════════════════════════════════════════════
+  var uaeChartEl = document.getElementById('uae-flights-chart');
+  var uaeNoteEl = document.getElementById('uae-flights-note');
+  var uaeLegendEl = document.getElementById('uae-flights-legend');
+  var uaeGroups = airportGroups.filter(function(g){ return g.key !== 'doh'; });
+
+  if (uaeChartEl) {
+    // UAE-only max for scaling
+    var uaeFlightMax = 0;
+    flightData.forEach(function(d) {
+      if (d._uaeTotal > uaeFlightMax) uaeFlightMax = d._uaeTotal;
+    });
+
+    // Note
+    if (uaeNoteEl) {
+      uaeNoteEl.innerHTML = 'UAE airports only: DXB (Emirates + flydubai) + AUH (Etihad) + SHJ (Air Arabia). Pre-attack baseline: <strong>' + fmt(uaeBaseline) + ' flights/day</strong>. Lowest: <strong>' + fmt(lowestDay.total) + '</strong> on ' + lowestDay.date + '. Latest (' + latestFlight.date + '): <strong>' + fmt(latestUAE) + '</strong> (' + uaeRecoveryPct + '% of baseline).';
+    }
+
+    var UAE_BAR_H = 28;
+    flightData.forEach(function(fd, fi) {
+      var dayUAE = fd._uaeTotal;
+      var dayPctOfBaseline = (dayUAE / uaeBaseline * 100).toFixed(0);
+      var isAttackStart = fd.date === '28 Feb';
+
+      // Attack start divider
+      if (isAttackStart) {
+        var divider = document.createElement('div');
+        divider.style.cssText = 'display:flex;align-items:center;gap:8px;margin:8px 0 4px;';
+        divider.innerHTML = '<div style="flex:1;height:1px;background:var(--red);"></div><span style="font-size:9px;font-weight:700;letter-spacing:2px;color:var(--red);text-transform:uppercase;white-space:nowrap;">\u26a0 ATTACKS BEGIN</span><div style="flex:1;height:1px;background:var(--red);"></div>';
+        uaeChartEl.appendChild(divider);
+      }
+
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:3px;height:' + UAE_BAR_H + 'px;';
+
+      // Date label
+      var dateLabel = document.createElement('div');
+      dateLabel.style.cssText = 'width:50px;font-size:10px;font-weight:700;color:' + (fd.preAttack ? 'var(--sub)' : 'var(--navy)') + ';text-align:right;flex-shrink:0;white-space:nowrap;';
+      dateLabel.textContent = fd.date;
+      row.appendChild(dateLabel);
+
+      // Bar track — scaled to UAE max
+      var track = document.createElement('div');
+      track.style.cssText = 'flex:1;height:' + (UAE_BAR_H - 4) + 'px;background:#f0ede8;border-radius:2px;overflow:hidden;display:flex;border:1px solid ' + (fd.preAttack ? 'transparent' : 'var(--border)') + ';' + (fd.preAttack ? 'opacity:0.5;' : '');
+
+      uaeGroups.forEach(function(group, gi) {
+        var groupTotal = fd['_' + group.key];
+        if (!groupTotal) return;
+
+        group.airlines.forEach(function(airlineKey) {
+          var val = fd[airlineKey] || 0;
+          if (!val) return;
+          var segPct = (val / uaeFlightMax * 100).toFixed(2);
+          var airlineLabel = airlines.find(function(a){ return a.key === airlineKey; }).label;
+          var seg = document.createElement('div');
+          seg.style.cssText = 'height:100%;width:0%;background:' + group.subColors[airlineKey] + ';flex-shrink:0;transition:width 0.8s ease;cursor:crosshair;display:flex;align-items:center;justify-content:center;overflow:hidden;';
+          seg.className = 'has-tip';
+          seg.dataset.tip = group.fullLabel + ' \u2014 ' + airlineLabel + ': ' + val;
+          seg.dataset.target = segPct + '%';
+          var showNum = parseFloat(segPct) > 4 || airlineKey === 'etihad';
+          if (showNum) {
+            var numSpan = document.createElement('span');
+            var isTight = parseFloat(segPct) <= 4;
+            numSpan.style.cssText = 'font-size:' + (isTight ? '7' : '8') + 'px;font-weight:700;color:white;white-space:nowrap;opacity:0.9;pointer-events:none;';
+            numSpan.textContent = val;
+            seg.appendChild(numSpan);
+          }
+          track.appendChild(seg);
+        });
+
+        if (gi < uaeGroups.length - 1 && groupTotal > 0) {
+          var sep = document.createElement('div');
+          sep.style.cssText = 'width:1px;height:100%;background:rgba(255,255,255,0.6);flex-shrink:0;';
+          track.appendChild(sep);
+        }
+      });
+      row.appendChild(track);
+
+      // Total + day-over-day % change
+      var totalLabel = document.createElement('div');
+      totalLabel.style.cssText = 'width:90px;font-size:11px;font-weight:700;color:var(--navy);flex-shrink:0;text-align:right;white-space:nowrap;';
+      var deltaHtml = '';
+      if (fi > 0) {
+        var prevUAE = flightData[fi-1]._uaeTotal;
+        var pctChg = ((dayUAE - prevUAE) / prevUAE * 100).toFixed(0);
+        var isUp = pctChg > 0;
+        var pctColor = isUp ? '#1a7a4a' : pctChg < 0 ? '#c0392b' : 'var(--sub)';
+        var pctArrow = isUp ? '\u25b2' : pctChg < 0 ? '\u25bc' : '';
+        deltaHtml = ' <span style="font-size:9px;font-weight:700;color:' + pctColor + ';">' + pctArrow + (isUp ? '+' : '') + pctChg + '%</span>';
+      }
+      totalLabel.innerHTML = '<strong>' + fmt(dayUAE) + '</strong>' + deltaHtml;
+      row.appendChild(totalLabel);
+
+      uaeChartEl.appendChild(row);
+    });
+
+    // Reference label
+    var uaeBaseRef = document.createElement('div');
+    uaeBaseRef.style.cssText = 'text-align:right;font-size:9px;color:var(--sub);margin-top:4px;letter-spacing:1px;';
+    uaeBaseRef.textContent = '\u0394% = day-over-day change \u00b7 DXB + AUH + SHJ only';
+    uaeChartEl.appendChild(uaeBaseRef);
+
+    // Animate
+    setTimeout(function() {
+      uaeChartEl.querySelectorAll('[data-target]').forEach(function(el) {
+        el.style.width = el.dataset.target;
+      });
+    }, 900);
+
+    // UAE-only legend
+    if (uaeLegendEl) {
+      uaeGroups.forEach(function(group) {
+        group.airlines.forEach(function(airlineKey) {
+          var airlineInfo = airlines.find(function(a){ return a.key === airlineKey; });
+          var leg = document.createElement('div');
+          leg.style.cssText = 'display:flex;align-items:center;gap:5px;font-size:11px;color:var(--sub);font-weight:500;';
+          var swatch = document.createElement('div');
+          swatch.style.cssText = 'width:14px;height:14px;border-radius:2px;flex-shrink:0;background:' + group.subColors[airlineKey] + ';';
+          leg.appendChild(swatch);
+          var lbl = document.createElement('span');
+          lbl.innerHTML = '<strong>' + group.label + '</strong> ' + airlineInfo.label;
+          leg.appendChild(lbl);
+          uaeLegendEl.appendChild(leg);
+        });
+      });
     }
   }
 
